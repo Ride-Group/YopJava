@@ -184,12 +184,12 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>oss</id>
+            <id>ossrh</id>
             <name>Sonatype Nexus Snapshots</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </snapshotRepository>
         <repository>
-            <id>oss</id>
+            <id>ossrh</id>
             <name>Nexus Release Repository</name>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
