@@ -1,9 +1,13 @@
 package com.ridegroup.yop.api;
 
 import com.ridegroup.yop.bean.price.PriceNew;
+import com.ridegroup.yop.bean.toft.AvailableService;
 import com.ridegroup.yop.client.LocalHttpClient;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * ToftAPI
@@ -56,13 +60,13 @@ public class ToftAPI extends BaseAPI {
      * 获取可用服务
      *
      * @param accessToken accessToken
-     * @return PriceNew
+     * @return AvailableService
      */
-    public static PriceNew getAvailableService(String accessToken) {
+    public static Map getAvailableService(String accessToken) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
                 .setUri(BASE_URI + "/v2/service")
                 .addParameter("access_token", accessToken)
                 .build();
-        return LocalHttpClient.executeJsonResult(httpUriRequest, PriceNew.class);
+        return LocalHttpClient.executeJsonResult(httpUriRequest, Map.class);
     }
 }
