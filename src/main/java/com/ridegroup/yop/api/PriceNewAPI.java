@@ -16,7 +16,7 @@ public class PriceNewAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param city        city
-     * @return Token
+     * @return PriceNew
      */
     public static PriceNew getPrice(String accessToken, String city, String type) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
