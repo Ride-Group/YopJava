@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.ridegroup.yop.bean.toft.AvailableService;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -23,6 +24,10 @@ public class JsonResponseHandler {
 
     public static <T> ResponseHandler<T> createResponseHandler(final Class<T> clazz) {
         return new JsonResponseHandlerImpl<T>(null, clazz);
+    }
+
+    public static <T> ResponseHandler<T> createResponseHandler(final TypeReference<T> type) {
+        return new JsonResponseHandlerTypeImpl<T>(null, type);
     }
 
     public static class JsonResponseHandlerImpl<T> extends LocalResponseHandler implements ResponseHandler<T> {
@@ -47,6 +52,29 @@ public class JsonResponseHandler {
                 throw new ClientProtocolException("Unexpected response status: " + status);
             }
         }
+    }
 
+    public static class JsonResponseHandlerTypeImpl<T> extends LocalResponseHandler implements ResponseHandler<T> {
+
+        private TypeReference<T> type;
+
+        public JsonResponseHandlerTypeImpl(String uriId, TypeReference<T> type) {
+            this.uriId = uriId;
+            this.type = type;
+        }
+
+        @Override
+        public T handleResponse(HttpResponse response)
+                throws ClientProtocolException, IOException {
+            int status = response.getStatusLine().getStatusCode();
+            if (status >= 200 && status < 300) {
+                HttpEntity entity = response.getEntity();
+                String str = EntityUtils.toString(entity, "utf-8");
+                logger.info("URI[{}] type elapsed time:{} ms RESPONSE DATA:{}", super.uriId, System.currentTimeMillis() - super.startTime, str);
+                return JsonUtil.parseObject(str, type);
+            } else {
+                throw new ClientProtocolException("Unexpected response status: " + status);
+            }
+        }
     }
 }

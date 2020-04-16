@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.alibaba.fastjson.TypeReference;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
@@ -155,6 +156,10 @@ public class LocalHttpClient {
      */
     public static <T> T executeJsonResult(HttpUriRequest request, Class<T> clazz) {
         return execute(request, JsonResponseHandler.createResponseHandler(clazz));
+    }
+
+    public static <T> T executeJsonResult(HttpUriRequest request, TypeReference<T> type) {
+        return execute(request, JsonResponseHandler.createResponseHandler(type));
     }
 
     public static <T> T keyStoreExecute(String mch_id, HttpUriRequest request, ResponseHandler<T> responseHandler) {
