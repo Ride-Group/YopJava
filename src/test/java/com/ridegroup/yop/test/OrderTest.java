@@ -64,7 +64,9 @@ public class OrderTest {
         reqMap.put("msg", "1");
         reqMap.put("app_trade_no", "ceshi" + time);
 
-        CreateOrderResult createOrderResult = OrderAPI.createOrder("AAuPlpLwVpCm3blBEbiKqOyOP1W97V3PtgJQoAf3", reqMap);
+        String accessToken = "AAuPlpLwVpCm3blBEbiKqOyOP1W97V3PtgJQoAf3";
+
+        CreateOrderResult createOrderResult = OrderAPI.createOrder(accessToken, reqMap);
         System.out.println(createOrderResult.getCode());
         System.out.println(createOrderResult.getMsg());
     }

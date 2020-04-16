@@ -1,85 +1,93 @@
 package com.ridegroup.yop.bean.toft;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.ridegroup.yop.bean.BaseResult;
 
 import java.util.Map;
 
-public class AvailableService extends BaseResult {
-    private Map<String, AvailableServiceObj> cityList;
+public class AvailableService {
+    @JSONField(name = "short")
+    private String city_short;
+    private String en;
+    private String name;
+    private int support_face_pay;
+    private int is_oversea;
+    private Map<String, String> product_list;
+    private Position position;
 
-    public Map<String, AvailableServiceObj> getCityList() {
-        return cityList;
+    public Position getPosition() {
+        return position;
     }
 
-    public void setCityList(Map<String, AvailableServiceObj> cityList) {
-        this.cityList = cityList;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
-    public static class AvailableServiceObj {
-        @JSONField(name = "short")
-        private String city_short;
-        private String en;
-        private String name;
-        private int support_face_pay;
-        private int is_oversea;
-        private Map<String, String> product_list;
-        private Map<String, Double> position;
+    public static class Position {
+        private double lng;
+        private double lat;
 
-        public String getCity_short() {
-            return city_short;
+        public double getLng() {
+            return lng;
         }
 
-        public void setCity_short(String city_short) {
-            this.city_short = city_short;
+        public void setLng(double lng) {
+            this.lng = lng;
         }
 
-        public String getEn() {
-            return en;
+        public double getLat() {
+            return lat;
         }
 
-        public void setEn(String en) {
-            this.en = en;
+        public void setLat(double lat) {
+            this.lat = lat;
         }
+    }
 
-        public String getName() {
-            return name;
-        }
+    public String getCity_short() {
+        return city_short;
+    }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+    public void setCity_short(String city_short) {
+        this.city_short = city_short;
+    }
 
-        public int getSupport_face_pay() {
-            return support_face_pay;
-        }
+    public String getEn() {
+        return en;
+    }
 
-        public void setSupport_face_pay(int support_face_pay) {
-            this.support_face_pay = support_face_pay;
-        }
+    public void setEn(String en) {
+        this.en = en;
+    }
 
-        public int getIs_oversea() {
-            return is_oversea;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public void setIs_oversea(int is_oversea) {
-            this.is_oversea = is_oversea;
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        public Map<String, String> getProduct_list() {
-            return product_list;
-        }
+    public int getSupport_face_pay() {
+        return support_face_pay;
+    }
 
-        public void setProduct_list(Map<String, String> product_list) {
-            this.product_list = product_list;
-        }
+    public void setSupport_face_pay(int support_face_pay) {
+        this.support_face_pay = support_face_pay;
+    }
 
-        public Map<String, Double> getPosition() {
-            return position;
-        }
+    public int getIs_oversea() {
+        return is_oversea;
+    }
 
-        public void setPosition(Map<String, Double> position) {
-            this.position = position;
-        }
+    public void setIs_oversea(int is_oversea) {
+        this.is_oversea = is_oversea;
+    }
+
+    public Map<String, String> getProduct_list() {
+        return product_list;
+    }
+
+    public void setProduct_list(Map<String, String> product_list) {
+        this.product_list = product_list;
     }
 }
