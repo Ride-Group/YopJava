@@ -50,7 +50,7 @@ public class ToftAPI extends BaseAPI {
      * 获取价格
      *
      * @param accessToken accessToken
-     * @param city        city
+     * @param city        城市
      * @return PriceNew
      */
     public static PriceNew getPrice(String accessToken, String city, String type) {
