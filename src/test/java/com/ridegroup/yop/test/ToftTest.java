@@ -5,6 +5,7 @@ import com.ridegroup.yop.api.ToftAPI;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.price.PriceNew;
 import com.ridegroup.yop.bean.toft.AvailableService;
+import com.ridegroup.yop.bean.toft.Nightfee;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,8 +25,9 @@ public class ToftTest extends BaseTest {
         assertEquals("200", availableService.getCode());
     }
 
-    public static void main(String[] args) {
-        BaseResultT<Map<String, AvailableService>> availableService = ToftAPI.getAvailableService(accessToken);
-        System.out.println(availableService);
+    @Test
+    public void testGetNightfee() {
+        BaseResultT<Nightfee> nightfee = ToftAPI.getNightfee(accessToken, BaseTest.city, type, carTypeId);
+        assertEquals("200", nightfee.getCode());
     }
 }

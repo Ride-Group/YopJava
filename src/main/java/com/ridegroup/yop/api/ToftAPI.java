@@ -2,9 +2,11 @@ package com.ridegroup.yop.api;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.price.PriceNew;
 import com.ridegroup.yop.bean.toft.AvailableService;
+import com.ridegroup.yop.bean.toft.Nightfee;
 import com.ridegroup.yop.client.LocalHttpClient;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
@@ -112,18 +114,22 @@ public class ToftAPI extends BaseAPI {
     }
 
     /**
-     * 获取价格
+     * 获得夜间服务费
      *
      * @param accessToken accessToken
-     * @param city        city
-     * @return PriceNew
+     * @param city        城市
+     * @param type        产品类型
+     * @param carTypeId   车型id
+     * @return BaseResultT<Nightfee>
      */
-    public static PriceNew getNightfee(String accessToken, String city, String type) {
+    public static BaseResultT<Nightfee> getNightfee(String accessToken, String city, String type, String carTypeId) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
-                .setUri(BASE_URI + "/v2/nightfee/" + city)
+                .setUri(BASE_URI + "/v2/nightfee")
                 .addParameter("access_token", accessToken)
+                .addParameter("city", city)
                 .addParameter("type", type)
+                .addParameter("car_type_id", carTypeId)
                 .build();
-        return LocalHttpClient.executeJsonResult(httpUriRequest, PriceNew.class);
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<Nightfee>>(){});
     }
 }

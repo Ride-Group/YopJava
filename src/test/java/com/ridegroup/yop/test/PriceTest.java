@@ -27,14 +27,4 @@ public class PriceTest extends BaseTest {
         assertEquals("200", priceNew.getCode());
         assertEquals("200", price.getCode());
     }
-
-    public static void main(String[] args) {
-        String city = "bj";
-        String type = "17";
-        PriceNew priceNew = PriceNewAPI.getPrice(accessToken, city, type);
-        System.out.println(priceNew);
-
-        BaseResultT<PriceNewT> price = PriceNewAPI.getPriceType(accessToken, city, type);
-        System.out.println(price);
-    }
 }
