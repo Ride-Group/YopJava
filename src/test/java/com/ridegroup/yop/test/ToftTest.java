@@ -22,7 +22,6 @@ public class ToftTest extends BaseTest {
     public void testGetAvailableService() {
         BaseResultT<Map<String, AvailableService>> availableService = ToftAPI.getAvailableService(accessToken);
         assertEquals("200", availableService.getCode());
-
     }
 
     public static void main(String[] args) {
