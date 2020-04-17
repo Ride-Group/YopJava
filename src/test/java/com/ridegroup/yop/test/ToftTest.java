@@ -55,4 +55,12 @@ public class ToftTest extends BaseTest {
         BaseResultT<List<Estimated>> estimated = ToftAPI.estimatedAll(ACCESS_TOKEN, BaseTest.getEstimatedParams(false));
         assertEquals("200", estimated.getCode());
     }
+
+    @Test
+    public void testGetNearbyCarCount() {
+        String lat = "39.955538";
+        String lng = "116.458637";
+        BaseResultT<NearbyCarCount> nearbyCarCount = ToftAPI.getNearbyCarCount(ACCESS_TOKEN, lat, lng);
+        assertEquals("200", nearbyCarCount.getCode());
+    }
 }

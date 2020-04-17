@@ -10,3 +10,4 @@
 3. add v2/airport api
 4. add v2/train api
 5. add v2/cost/estimated api
+6. add v2/driver/nearbyCarCount api

@@ -240,4 +240,22 @@ public class ToftAPI extends BaseAPI {
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<List<Estimated>>>(){});
     }
+
+    /**
+     * 获得附近车辆数
+     *
+     * @param accessToken accessToken
+     * @param lat         出发地点纬度
+     * @param lng         出发地点经度
+     * @return BaseResultT<NearbyCarCount>
+     */
+    public static BaseResultT<NearbyCarCount> getNearbyCarCount(String accessToken, String lat, String lng) {
+        HttpUriRequest httpUriRequest = RequestBuilder.get()
+                .setUri(BASE_URI + "/v2/driver/nearbyCarCount")
+                .addParameter("access_token", accessToken)
+                .addParameter("lat", lat)
+                .addParameter("lng", lng)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<NearbyCarCount>>(){});
+    }
 }
