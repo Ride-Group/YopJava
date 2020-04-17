@@ -47,6 +47,13 @@ public class OrderTest extends BaseTest {
     }
 
     @Test
+    public void testGetOrderInfo() {
+        String orderId = "6816269519521542779";
+        BaseResultT<OrderInfo> orderInfo = OrderAPI.getOrderInfo(ACCESS_TOKEN, orderId);
+        assertEquals("200", orderInfo.getCode());
+    }
+
+    @Test
     public void testCreateOrder() {
         HashMap<String, Object> reqMap = new HashMap<>();
 

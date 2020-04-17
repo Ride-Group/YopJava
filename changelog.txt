@@ -12,3 +12,4 @@
 5. add v2/cost/estimated api
 6. add v2/driver/nearbyCarCount api
 7. add v2/order get api
+8. add v2/order info api
