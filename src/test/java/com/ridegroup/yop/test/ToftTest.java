@@ -7,6 +7,7 @@ import com.ridegroup.yop.bean.price.PriceNew;
 import com.ridegroup.yop.bean.toft.Airport;
 import com.ridegroup.yop.bean.toft.AvailableService;
 import com.ridegroup.yop.bean.toft.Nightfee;
+import com.ridegroup.yop.bean.toft.Train;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,5 +37,11 @@ public class ToftTest extends BaseTest {
     public void testGetAirport() {
         BaseResultT<Map<String, Airport>> airport = ToftAPI.getAirport(ACCESS_TOKEN, ToftAPI.MAP_TYPE_MARS);
         assertEquals("200", airport.getCode());
+    }
+
+    @Test
+    public void testGetTrain() {
+        BaseResultT<Map<String, Train>> train = ToftAPI.getTrain(ACCESS_TOKEN, ToftAPI.MAP_TYPE_MARS);
+        assertEquals("200", train.getCode());
     }
 }

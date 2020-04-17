@@ -8,6 +8,7 @@ import com.ridegroup.yop.bean.price.PriceNew;
 import com.ridegroup.yop.bean.toft.Airport;
 import com.ridegroup.yop.bean.toft.AvailableService;
 import com.ridegroup.yop.bean.toft.Nightfee;
+import com.ridegroup.yop.bean.toft.Train;
 import com.ridegroup.yop.client.LocalHttpClient;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
@@ -44,8 +45,8 @@ public class ToftAPI extends BaseAPI {
         return instance;
     }
 
-    public PriceNew getPriceData(String city, String type) {
-        return ToftAPI.getPrice(this.accessToken, city, type);
+    public PriceNew getPriceData(String city, String type, String airCode) {
+        return ToftAPI.getPrice(this.accessToken, city, type, airCode);
     }
 
     /**
@@ -53,13 +54,16 @@ public class ToftAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param city        城市
+     * @param type        产品类型
+     * @param airCode     机场三字码，接送机必传
      * @return PriceNew
      */
-    public static PriceNew getPrice(String accessToken, String city, String type) {
+    public static PriceNew getPrice(String accessToken, String city, String type, String airCode) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
                 .setUri(BASE_URI + "/v2/priceNew/" + city)
                 .addParameter("access_token", accessToken)
                 .addParameter("type", type)
+                .addParameter("aircode", airCode)
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, PriceNew.class);
     }
@@ -149,5 +153,21 @@ public class ToftAPI extends BaseAPI {
                 .addParameter("map_type", mapType)
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<Map<String, Airport>>>(){});
+    }
+
+    /**
+     * 获得夜间服务费
+     *
+     * @param accessToken accessToken
+     * @param mapType     地图类型 1-百度 2-火星 3-谷歌 默认 1-百度
+     * @return Map<String, BaseResultT<Train>>
+     */
+    public static BaseResultT<Map<String, Train>> getTrain(String accessToken, String mapType) {
+        HttpUriRequest httpUriRequest = RequestBuilder.get()
+                .setUri(BASE_URI + "/v2/train")
+                .addParameter("access_token", accessToken)
+                .addParameter("map_type", mapType)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<Map<String, Train>>>(){});
     }
 }
