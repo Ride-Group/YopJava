@@ -1,9 +1,9 @@
 2020-04-15
-1. add v2/priceNew
+1. add v2/priceNew api
 
 2020-04-16
-1. add v2/order
+1. add v2/order api
 
 2020-04-17
-1. add v2/service
-2. add v2/nightfee
+1. add v2/service api
+2. add v2/nightfee api
