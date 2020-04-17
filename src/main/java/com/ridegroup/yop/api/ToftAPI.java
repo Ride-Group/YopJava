@@ -187,7 +187,7 @@ public class ToftAPI extends BaseAPI {
             throw new IllegalArgumentException("has no car_type_id param");
         }
 
-        HttpEntity reqEntity = BaseAPI.getHttpEntity(accessToken, reqMap);
+        HttpEntity reqEntity = BaseAPI.getPostHttpEntity(accessToken, reqMap);
         HttpUriRequest httpUriRequest = RequestBuilder.post()
                 .setUri(BASE_URI + "/v2/cost/estimated")
                 .setEntity(reqEntity)

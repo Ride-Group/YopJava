@@ -1,5 +1,38 @@
 package com.ridegroup.yop.bean.order;
 
+/**
+ * "order_id":6816269519521542779,
+ "type":7,
+ "city":"北京",
+ "create_time":1587036418,
+ "car_type_id":2,
+ "car_type":"舒适",
+ "expect_start_time":1587072416,
+ "time_length":2280,
+ "passenger_name":"test",
+ "passenger_phone":"16811116667",
+ "total_amount":0,
+ "start_position":"颐和园",
+ "start_address":"",
+ "end_position":"总部基地",
+ "end_address":"",
+ "flight_number":"",
+ "msg":"",
+ "status":8,
+ "driver_phone":"",
+ "vehicle_number":"",
+ "driver_name":"",
+ "start_time":1587072416,
+ "end_time":1587036551,
+ "system_distance":0,
+ "pay_amount":0,
+ "pay_status":3,
+ "start_latitude":39.949861543834,
+ "start_longitude":116.45203701793,
+ "end_latitude":39.905157339217,
+ "end_longitude":116.36653850808,
+ "car_brand":""
+ */
 public class OrderInfo {
     private Long order_id;
     private int type;
@@ -24,6 +57,15 @@ public class OrderInfo {
     private String vehicle_number;
     private String driver_name;
     private String car_brand;
+    private int start_time;
+    private int end_time;
+    private int system_distance;
+    private int pay_amount;
+    private int pay_status;
+    private double start_latitude;
+    private double start_longitude;
+    private double end_latitude;
+    private double end_longitude;
 
     public Long getOrder_id() {
         return order_id;
@@ -207,5 +249,77 @@ public class OrderInfo {
 
     public void setCar_brand(String car_brand) {
         this.car_brand = car_brand;
+    }
+
+    public int getStart_time() {
+        return start_time;
+    }
+
+    public void setStart_time(int start_time) {
+        this.start_time = start_time;
+    }
+
+    public int getEnd_time() {
+        return end_time;
+    }
+
+    public void setEnd_time(int end_time) {
+        this.end_time = end_time;
+    }
+
+    public int getSystem_distance() {
+        return system_distance;
+    }
+
+    public void setSystem_distance(int system_distance) {
+        this.system_distance = system_distance;
+    }
+
+    public int getPay_amount() {
+        return pay_amount;
+    }
+
+    public void setPay_amount(int pay_amount) {
+        this.pay_amount = pay_amount;
+    }
+
+    public int getPay_status() {
+        return pay_status;
+    }
+
+    public void setPay_status(int pay_status) {
+        this.pay_status = pay_status;
+    }
+
+    public double getStart_latitude() {
+        return start_latitude;
+    }
+
+    public void setStart_latitude(double start_latitude) {
+        this.start_latitude = start_latitude;
+    }
+
+    public double getStart_longitude() {
+        return start_longitude;
+    }
+
+    public void setStart_longitude(double start_longitude) {
+        this.start_longitude = start_longitude;
+    }
+
+    public double getEnd_latitude() {
+        return end_latitude;
+    }
+
+    public void setEnd_latitude(double end_latitude) {
+        this.end_latitude = end_latitude;
+    }
+
+    public double getEnd_longitude() {
+        return end_longitude;
+    }
+
+    public void setEnd_longitude(double end_longitude) {
+        this.end_longitude = end_longitude;
     }
 }

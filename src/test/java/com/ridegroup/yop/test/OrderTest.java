@@ -1,10 +1,12 @@
 package com.ridegroup.yop.test;
 
+import com.ridegroup.yop.api.BaseAPI;
 import com.ridegroup.yop.api.OrderAPI;
 import com.ridegroup.yop.api.PriceNewAPI;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.order.CreateOrderResult;
 import com.ridegroup.yop.bean.order.OrderInfo;
+import com.ridegroup.yop.bean.order.OrderList;
 import com.ridegroup.yop.bean.price.PriceNew;
 import com.ridegroup.yop.bean.price.PriceNewT;
 import org.junit.Before;
@@ -27,7 +29,20 @@ public class OrderTest extends BaseTest {
     @Test
     public void testGetOrderList() {
         HashMap<String, Object> reqMap = new HashMap<>();
-        BaseResultT<List<OrderInfo>> orderList = OrderAPI.getOrderList(ACCESS_TOKEN, reqMap);
+        /*
+         * map_type
+         * passenger_phone
+         * status
+         * page
+         * limit
+         * time_type 0-create_time 1-end_time
+         * start_time
+         * end_time
+         */
+        reqMap.put("map_type", BaseAPI.MAP_TYPE_MARS);
+        reqMap.put("status", "all");
+        reqMap.put("start_time", "2020-04-16");
+        BaseResultT<OrderList> orderList = OrderAPI.getOrderList(ACCESS_TOKEN, reqMap);
         assertEquals("200", orderList.getCode());
     }
 
