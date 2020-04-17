@@ -1,9 +1,9 @@
 package com.ridegroup.yop.test;
 
 public class BaseTest {
-    protected static String accessToken = "AAuPlpLwVpCm3blBEbiKqOyOP1W97V3PtgJQoAf3";
+    protected final static String ACCESS_TOKEN = "AAuPlpLwVpCm3blBEbiKqOyOP1W97V3PtgJQoAf3";
 
-    protected static String city = "bj";
-    protected static String type = "17";
-    protected static String carTypeId = "2";
+    protected final static String CITY = "bj";
+    protected final static String TYPE = "17";
+    protected final static String CAR_TYPE_ID = "2";
 }

@@ -8,6 +8,10 @@ import org.apache.http.message.BasicHeader;
 public abstract class BaseAPI {
     protected static final String BASE_URI = "https://yop.yongche.com";
 
+    public final static String MAP_TYPE_BAIDU = "1";
+    public final static String MAP_TYPE_MARS = "2";
+    public final static String MAP_TYPE_GOOGLE = "3";
+
     protected static Header jsonHeader = new BasicHeader(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.toString());
     protected static Header xmlHeader = new BasicHeader(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_XML.toString());
 

@@ -7,3 +7,4 @@
 2020-04-17
 1. add v2/service api
 2. add v2/nightfee api
+3. add v2/airport api

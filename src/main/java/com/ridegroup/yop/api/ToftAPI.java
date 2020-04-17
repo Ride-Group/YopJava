@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.price.PriceNew;
+import com.ridegroup.yop.bean.toft.Airport;
 import com.ridegroup.yop.bean.toft.AvailableService;
 import com.ridegroup.yop.bean.toft.Nightfee;
 import com.ridegroup.yop.client.LocalHttpClient;
@@ -23,6 +24,7 @@ import java.util.Map;
  * @author PeterZhang
  */
 public class ToftAPI extends BaseAPI {
+
     private String accessToken;
 
     private static volatile ToftAPI instance = null;
@@ -131,5 +133,21 @@ public class ToftAPI extends BaseAPI {
                 .addParameter("car_type_id", carTypeId)
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<Nightfee>>(){});
+    }
+
+    /**
+     * 获得夜间服务费
+     *
+     * @param accessToken accessToken
+     * @param mapType     地图类型 1-百度 2-火星 3-谷歌 默认 1-百度
+     * @return Map<String, BaseResultT<Airport>>
+     */
+    public static BaseResultT<Map<String, Airport>> getAirport(String accessToken, String mapType) {
+        HttpUriRequest httpUriRequest = RequestBuilder.get()
+                .setUri(BASE_URI + "/v2/airport")
+                .addParameter("access_token", accessToken)
+                .addParameter("map_type", mapType)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<Map<String, Airport>>>(){});
     }
 }

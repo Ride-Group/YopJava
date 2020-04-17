@@ -78,7 +78,7 @@ public class OrderTest extends BaseTest {
         reqMap.put("msg", "1");
         reqMap.put("app_trade_no", "ceshi" + time);
 
-        CreateOrderResult createOrderResult = OrderAPI.createOrder(accessToken, reqMap);
+        CreateOrderResult createOrderResult = OrderAPI.createOrder(ACCESS_TOKEN, reqMap);
         assertEquals("200", createOrderResult.getCode());
     }
 }
