@@ -2,7 +2,7 @@
 1. add v2/priceNew api
 
 2020-04-16
-1. add v2/order api
+1. add v2/order post api
 
 2020-04-17
 1. add v2/service api
@@ -11,3 +11,4 @@
 4. add v2/train api
 5. add v2/cost/estimated api
 6. add v2/driver/nearbyCarCount api
+7. add v2/order get api

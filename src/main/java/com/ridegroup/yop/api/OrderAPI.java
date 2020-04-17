@@ -1,6 +1,9 @@
 package com.ridegroup.yop.api;
 
+import com.alibaba.fastjson.TypeReference;
+import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.order.CreateOrderResult;
+import com.ridegroup.yop.bean.order.OrderInfo;
 import com.ridegroup.yop.client.LocalHttpClient;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
@@ -26,27 +29,31 @@ import java.util.Map;
 public class OrderAPI extends BaseAPI {
     private static Logger logger = LoggerFactory.getLogger(OrderAPI.class);
     /**
+     * 获得订单列表
+     *
+     * @param accessToken accessToken
+     * @param reqMap 请求参数
+     * @return BaseResultT<List<OrderInfo>>
+     */
+    public static BaseResultT<List<OrderInfo>> getOrderList(String accessToken, Map<String, Object> reqMap) {
+        HttpEntity reqEntity = BaseAPI.getHttpEntity(accessToken, reqMap);
+
+        HttpUriRequest httpUriRequest = RequestBuilder.get()
+                .setUri(BASE_URI + "/v2/order")
+                .setEntity(reqEntity)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<List<OrderInfo>>>(){});
+    }
+
+    /**
      * 创建订单
      *
      * @param accessToken accessToken
+     * @param reqMap 请求参数
      * @return CreateOrderResult
      */
     public static CreateOrderResult createOrder(String accessToken, Map<String, Object> reqMap) {
-        List<NameValuePair> formParams = new ArrayList<NameValuePair>();
-        formParams.add(new BasicNameValuePair("access_token", accessToken));
-
-        Iterator iterator = reqMap.entrySet().iterator();
-        while(iterator.hasNext()) {
-            Map.Entry<String, String> entry = (Map.Entry<String, String>) iterator.next();
-            formParams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
-        }
-
-        HttpEntity reqEntity = null;
-        try {
-            reqEntity = new UrlEncodedFormEntity(formParams, "utf-8");
-        } catch(UnsupportedEncodingException e) {
-            logger.error(e.toString());
-        }
+        HttpEntity reqEntity = BaseAPI.getHttpEntity(accessToken, reqMap);
         RequestConfig requestConfig = RequestConfig.custom()
                 .setSocketTimeout(10000)
                 .setConnectTimeout(3000)

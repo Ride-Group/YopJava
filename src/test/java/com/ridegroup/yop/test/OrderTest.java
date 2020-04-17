@@ -4,6 +4,7 @@ import com.ridegroup.yop.api.OrderAPI;
 import com.ridegroup.yop.api.PriceNewAPI;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.order.CreateOrderResult;
+import com.ridegroup.yop.bean.order.OrderInfo;
 import com.ridegroup.yop.bean.price.PriceNew;
 import com.ridegroup.yop.bean.price.PriceNewT;
 import org.junit.Before;
@@ -13,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,6 +22,13 @@ public class OrderTest extends BaseTest {
     @Before
     public void setUp() throws Exception {
 
+    }
+
+    @Test
+    public void testGetOrderList() {
+        HashMap<String, Object> reqMap = new HashMap<>();
+        BaseResultT<List<OrderInfo>> orderList = OrderAPI.getOrderList(ACCESS_TOKEN, reqMap);
+        assertEquals("200", orderList.getCode());
     }
 
     @Test

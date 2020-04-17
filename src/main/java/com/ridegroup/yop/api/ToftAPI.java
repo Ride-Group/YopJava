@@ -183,24 +183,11 @@ public class ToftAPI extends BaseAPI {
      * @exception IllegalArgumentException 参数错误
      */
     public static BaseResultT<Estimated> estimatedOne(String accessToken, Map<String, Object> reqMap) throws IllegalArgumentException {
-        List<NameValuePair> formParams = new ArrayList<NameValuePair>();
-        formParams.add(new BasicNameValuePair("access_token", accessToken));
-
         if(!reqMap.containsKey("car_type_id")) {
             throw new IllegalArgumentException("has no car_type_id param");
         }
-        Iterator iterator = reqMap.entrySet().iterator();
-        while(iterator.hasNext()) {
-            Map.Entry<String, String> entry = (Map.Entry<String, String>) iterator.next();
-            formParams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
-        }
 
-        HttpEntity reqEntity = null;
-        try {
-            reqEntity = new UrlEncodedFormEntity(formParams, "utf-8");
-        } catch(UnsupportedEncodingException e) {
-            logger.error(e.toString());
-        }
+        HttpEntity reqEntity = BaseAPI.getHttpEntity(accessToken, reqMap);
         HttpUriRequest httpUriRequest = RequestBuilder.post()
                 .setUri(BASE_URI + "/v2/cost/estimated")
                 .setEntity(reqEntity)
