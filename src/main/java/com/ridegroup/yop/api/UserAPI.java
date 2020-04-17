@@ -6,4 +6,5 @@ package com.ridegroup.yop.api;
  * @author PeterZhang
  */
 public class UserAPI extends BaseAPI {
+
 }
