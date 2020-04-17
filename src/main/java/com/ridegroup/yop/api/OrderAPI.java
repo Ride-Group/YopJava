@@ -63,7 +63,7 @@ public class OrderAPI extends BaseAPI {
     }
 
     /**
-     * 获得订单列表
+     * 获得单一订单信息
      *
      * @param accessToken accessToken
      * @param orderId     订单号
