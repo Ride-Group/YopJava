@@ -140,7 +140,7 @@ public class ToftAPI extends BaseAPI {
     }
 
     /**
-     * 获得夜间服务费
+     * 获得机场信息
      *
      * @param accessToken accessToken
      * @param mapType     地图类型 1-百度 2-火星 3-谷歌 默认 1-百度
@@ -156,7 +156,7 @@ public class ToftAPI extends BaseAPI {
     }
 
     /**
-     * 获得夜间服务费
+     * 获得火车站信息
      *
      * @param accessToken accessToken
      * @param mapType     地图类型 1-百度 2-火星 3-谷歌 默认 1-百度
