@@ -32,6 +32,46 @@ package com.ridegroup.yop.bean.order;
  "end_latitude":39.905157339217,
  "end_longitude":116.36653850808,
  "car_brand":""
+
+
+ order_id: "6816269519521542779",
+ type: "7",
+ city: "北京",
+ create_time: "1587036418",
+ car_type_id: "2",
+ car_type: "舒适",
+ expect_start_time: "1587072416",
+ time_length: "2280",
+ passenger_name: "test",
+ passenger_number: 1,
+ passenger_phone: "16811116667",
+ total_amount: "0.00",
+ start_position: "颐和园",
+ start_address: "",
+ end_position: "总部基地",
+ end_address: "",
+ start_longitude: "",
+ start_latitude: "",
+ end_longitude: "",
+ end_latitude: "",
+ flight_number: "",
+ msg: "",
+ status: "8",
+ driver_id: "",
+ driver_phone: "",
+ vehicle_number: "",
+ driver_name: "",
+ color: "颜色未知",
+ en_color: "unknow",
+ reason_id: "63003",
+ is_confirm: 0,
+ confirm_time: 0,
+ car_brand: "",
+ car_en_brand: "",
+ balance_status: 0,
+ regulatepan_reason: "",
+ insure_company: "",
+ insure_number: ""
  */
 public class OrderInfo {
     private Long order_id;
@@ -66,6 +106,17 @@ public class OrderInfo {
     private double start_longitude;
     private double end_latitude;
     private double end_longitude;
+    private String driver_id;
+    private String color;
+    private String en_color;
+    private String reason_id;
+    private int is_confirm;
+    private int confirm_time;
+    private String car_en_brand;
+    private int balance_status;
+    private String regulatepan_reason;
+    private String insure_company;
+    private String insure_number;
 
     public Long getOrder_id() {
         return order_id;
@@ -321,5 +372,93 @@ public class OrderInfo {
 
     public void setEnd_longitude(double end_longitude) {
         this.end_longitude = end_longitude;
+    }
+
+    public String getDriver_id() {
+        return driver_id;
+    }
+
+    public void setDriver_id(String driver_id) {
+        this.driver_id = driver_id;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getEn_color() {
+        return en_color;
+    }
+
+    public void setEn_color(String en_color) {
+        this.en_color = en_color;
+    }
+
+    public String getReason_id() {
+        return reason_id;
+    }
+
+    public void setReason_id(String reason_id) {
+        this.reason_id = reason_id;
+    }
+
+    public int getIs_confirm() {
+        return is_confirm;
+    }
+
+    public void setIs_confirm(int is_confirm) {
+        this.is_confirm = is_confirm;
+    }
+
+    public int getConfirm_time() {
+        return confirm_time;
+    }
+
+    public void setConfirm_time(int confirm_time) {
+        this.confirm_time = confirm_time;
+    }
+
+    public String getCar_en_brand() {
+        return car_en_brand;
+    }
+
+    public void setCar_en_brand(String car_en_brand) {
+        this.car_en_brand = car_en_brand;
+    }
+
+    public int getBalance_status() {
+        return balance_status;
+    }
+
+    public void setBalance_status(int balance_status) {
+        this.balance_status = balance_status;
+    }
+
+    public String getRegulatepan_reason() {
+        return regulatepan_reason;
+    }
+
+    public void setRegulatepan_reason(String regulatepan_reason) {
+        this.regulatepan_reason = regulatepan_reason;
+    }
+
+    public String getInsure_company() {
+        return insure_company;
+    }
+
+    public void setInsure_company(String insure_company) {
+        this.insure_company = insure_company;
+    }
+
+    public String getInsure_number() {
+        return insure_number;
+    }
+
+    public void setInsure_number(String insure_number) {
+        this.insure_number = insure_number;
     }
 }

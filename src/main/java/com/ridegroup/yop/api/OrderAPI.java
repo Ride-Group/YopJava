@@ -63,6 +63,37 @@ public class OrderAPI extends BaseAPI {
     }
 
     /**
+     * 获得订单列表
+     *
+     * @param accessToken accessToken
+     * @param reqMap 请求参数
+     * @return BaseResultT<OrderList>
+     */
+    public static BaseResultT<OrderList> getOrderInfo(String accessToken, Map<String, Object> reqMap) {
+        URIBuilder uri = null;
+        try {
+            uri = new URIBuilder(BASE_URI + "/v2/order");
+            List<NameValuePair> formParams = new ArrayList<NameValuePair>();
+            formParams.add(new BasicNameValuePair("access_token", accessToken));
+
+            Iterator iterator = reqMap.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<String, String> entry = (Map.Entry<String, String>) iterator.next();
+                formParams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+            }
+            uri.addParameters(formParams);
+
+            HttpUriRequest httpUriRequest = RequestBuilder.get()
+                    .setUri(uri.build())
+                    .build();
+            return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<OrderList>>(){});
+        } catch (URISyntaxException e) {
+            logger.error(e.toString());
+        }
+        return null;
+    }
+
+    /**
      * 创建订单
      *
      * @param accessToken accessToken
