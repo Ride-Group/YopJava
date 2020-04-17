@@ -175,7 +175,7 @@ public class ToftAPI extends BaseAPI {
     }
 
     /**
-     * 预估费用
+     * 预估费用有车型
      *
      * @param accessToken accessToken
      * @param reqMap      输入参数
@@ -209,7 +209,7 @@ public class ToftAPI extends BaseAPI {
     }
 
     /**
-     * 预估费用
+     * 预估费用无车型
      *
      * @param accessToken accessToken
      * @param reqMap      输入参数
