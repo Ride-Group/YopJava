@@ -9,3 +9,4 @@
 2. add v2/nightfee api
 3. add v2/airport api
 4. add v2/train api
+5. add v2/cost/estimated api

@@ -5,17 +5,19 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.price.PriceNew;
-import com.ridegroup.yop.bean.toft.Airport;
-import com.ridegroup.yop.bean.toft.AvailableService;
-import com.ridegroup.yop.bean.toft.Nightfee;
-import com.ridegroup.yop.bean.toft.Train;
+import com.ridegroup.yop.bean.toft.*;
 import com.ridegroup.yop.client.LocalHttpClient;
+import org.apache.http.HttpEntity;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
+import org.apache.http.message.BasicNameValuePair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.io.UnsupportedEncodingException;
+import java.util.*;
 
 /**
  * ToftAPI
@@ -25,6 +27,7 @@ import java.util.Map;
  * @author PeterZhang
  */
 public class ToftAPI extends BaseAPI {
+    private static Logger logger = LoggerFactory.getLogger(ToftAPI.class);
 
     private String accessToken;
 
@@ -169,5 +172,72 @@ public class ToftAPI extends BaseAPI {
                 .addParameter("map_type", mapType)
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<Map<String, Train>>>(){});
+    }
+
+    /**
+     * 预估费用
+     *
+     * @param accessToken accessToken
+     * @param reqMap      输入参数
+     * @return BaseResultT<Estimated>
+     * @exception IllegalArgumentException 参数错误
+     */
+    public static BaseResultT<Estimated> estimatedOne(String accessToken, Map<String, Object> reqMap) throws IllegalArgumentException {
+        List<NameValuePair> formParams = new ArrayList<NameValuePair>();
+        formParams.add(new BasicNameValuePair("access_token", accessToken));
+
+        if(!reqMap.containsKey("car_type_id")) {
+            throw new IllegalArgumentException("has no car_type_id param");
+        }
+        Iterator iterator = reqMap.entrySet().iterator();
+        while(iterator.hasNext()) {
+            Map.Entry<String, String> entry = (Map.Entry<String, String>) iterator.next();
+            formParams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+        }
+
+        HttpEntity reqEntity = null;
+        try {
+            reqEntity = new UrlEncodedFormEntity(formParams, "utf-8");
+        } catch(UnsupportedEncodingException e) {
+            logger.error(e.toString());
+        }
+        HttpUriRequest httpUriRequest = RequestBuilder.post()
+                .setUri(BASE_URI + "/v2/cost/estimated")
+                .setEntity(reqEntity)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<Estimated>>(){});
+    }
+
+    /**
+     * 预估费用
+     *
+     * @param accessToken accessToken
+     * @param reqMap      输入参数
+     * @return BaseResultT<List<Estimated>>
+     */
+    public static BaseResultT<List<Estimated>> estimatedAll(String accessToken, Map<String, Object> reqMap) {
+        List<NameValuePair> formParams = new ArrayList<NameValuePair>();
+        formParams.add(new BasicNameValuePair("access_token", accessToken));
+
+        Iterator iterator = reqMap.entrySet().iterator();
+        while(iterator.hasNext()) {
+            Map.Entry<String, String> entry = (Map.Entry<String, String>) iterator.next();
+            if(entry.getKey().equals("car_type_id")) {
+                continue;//car_type_id影响返回结果
+            }
+            formParams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+        }
+
+        HttpEntity reqEntity = null;
+        try {
+            reqEntity = new UrlEncodedFormEntity(formParams, "utf-8");
+        } catch(UnsupportedEncodingException e) {
+            logger.error(e.toString());
+        }
+        HttpUriRequest httpUriRequest = RequestBuilder.post()
+                .setUri(BASE_URI + "/v2/cost/estimated")
+                .setEntity(reqEntity)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<List<Estimated>>>(){});
     }
 }
