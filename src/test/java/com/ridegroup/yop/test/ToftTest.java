@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
 import java.util.Map;
 
 public class ToftTest extends BaseTest {
@@ -46,6 +47,12 @@ public class ToftTest extends BaseTest {
     public void testEstimatedOne() {
         //{"code":200,"msg":"ok","result":{"car_type_id":"2","car_type":"舒适","description":"帕萨特(4人)&#38;#38;#38;#38;#38;#38;#38;#38;#60;br\/&#38;#38;#38;#38;#38;#38;#38;#38;#62;雅阁(4人)&#38;#38;#38;#38;#38;#38;#38;#38;#60;br\/&#38;#38;#38;#38;#38;#38;#38;#38;#62;凯美瑞等同级车型(4人)","time_length":2377,"distance":13.822,"total_fee":177,"estimated_price_detail":{"fixed_fee":138,"fixed_fee_time":45,"fixed_fee_kilo":20,"time_fee":0,"kilo_fee":0,"extra_time_fee":0,"extra_distance_fee":0,"night_amount":39,"kongshi_fee":0,"airport_service_fee":0,"min_fee":138}}}
         BaseResultT<Estimated> estimated = ToftAPI.estimatedOne(ACCESS_TOKEN, BaseTest.getEstimatedParams(true));
+        assertEquals("200", estimated.getCode());
+    }
+
+    @Test
+    public void testEstimatedAll() {
+        BaseResultT<List<Estimated>> estimated = ToftAPI.estimatedAll(ACCESS_TOKEN, BaseTest.getEstimatedParams(false));
         assertEquals("200", estimated.getCode());
     }
 }
