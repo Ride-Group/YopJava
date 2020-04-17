@@ -18,6 +18,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Order API
+ *
+ * @author PeterZhang
+ */
 public class OrderAPI extends BaseAPI {
     private static Logger logger = LoggerFactory.getLogger(OrderAPI.class);
     /**

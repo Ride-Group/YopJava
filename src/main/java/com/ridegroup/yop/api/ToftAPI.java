@@ -110,4 +110,20 @@ public class ToftAPI extends BaseAPI {
         }
         return result;
     }
+
+    /**
+     * 获取价格
+     *
+     * @param accessToken accessToken
+     * @param city        city
+     * @return PriceNew
+     */
+    public static PriceNew getNightfee(String accessToken, String city, String type) {
+        HttpUriRequest httpUriRequest = RequestBuilder.get()
+                .setUri(BASE_URI + "/v2/nightfee/" + city)
+                .addParameter("access_token", accessToken)
+                .addParameter("type", type)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, PriceNew.class);
+    }
 }
