@@ -1,16 +1,10 @@
 package com.ridegroup.yop.api;
 
-import com.alibaba.fastjson.TypeReference;
-import com.ridegroup.yop.bean.BaseResultT;
-import com.ridegroup.yop.bean.order.OrderList;
-import com.ridegroup.yop.client.LocalHttpClient;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.message.BasicHeader;
