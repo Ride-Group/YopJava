@@ -23,6 +23,20 @@ import java.util.List;
      ],
  wait_driver_time_length;
  wait_user_time_length: 177
+
+ driver_id: 4099101,
+ name: "赵师傅",
+ score: 100,
+ good_comment_rate: 98,
+ unittime_complete_count: 13,
+ is_served: 0,
+ latitude: 40.029119,
+ longitude: 116.32766,
+ brand: "本田雅阁",
+ car_type: "舒适",
+ car_type_id: 2,
+ is_default: 0,
+ photo: "https://i2.yongche.name/media/g2/M03/15/0D/rBEBJVjI4zCIW3y9AACGb_mdXJIAAIQdwFzPDUAAIaH503.jpg"
  */
 public class AcceptedDriver {
     private List<Driver> carlist;
@@ -55,18 +69,18 @@ public class AcceptedDriver {
 
     public static class Driver {
         private int driver_id;
-        private int name;
+        private String name;
         private int score;
         private int good_comment_rate;
         private int unittime_complete_count;
         private int is_served;
         private int latitude;
         private int longitude;
-        private int brand;
-        private int car_type;
+        private String brand;
+        private String car_type;
         private int car_type_id;
         private int is_default;
-        private int photo;
+        private String photo;
 
         public int getDriver_id() {
             return driver_id;
@@ -76,11 +90,11 @@ public class AcceptedDriver {
             this.driver_id = driver_id;
         }
 
-        public int getName() {
+        public String getName() {
             return name;
         }
 
-        public void setName(int name) {
+        public void setName(String name) {
             this.name = name;
         }
 
@@ -132,19 +146,19 @@ public class AcceptedDriver {
             this.longitude = longitude;
         }
 
-        public int getBrand() {
+        public String getBrand() {
             return brand;
         }
 
-        public void setBrand(int brand) {
+        public void setBrand(String brand) {
             this.brand = brand;
         }
 
-        public int getCar_type() {
+        public String getCar_type() {
             return car_type;
         }
 
-        public void setCar_type(int car_type) {
+        public void setCar_type(String car_type) {
             this.car_type = car_type;
         }
 
@@ -164,11 +178,11 @@ public class AcceptedDriver {
             this.is_default = is_default;
         }
 
-        public int getPhoto() {
+        public String getPhoto() {
             return photo;
         }
 
-        public void setPhoto(int photo) {
+        public void setPhoto(String photo) {
             this.photo = photo;
         }
     }
