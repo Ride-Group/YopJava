@@ -70,7 +70,6 @@ public class OrderTest extends BaseTest {
     public void testCreateOrderAndGetSelectDriver() {
         Map<String, Object> reqMap = BaseTest.getCreateOrderParams();
         CreateOrderResult createOrderResult = OrderAPI.createOrder(ACCESS_TOKEN, reqMap);
-        assertEquals("200", createOrderResult.getCode());
 
         String orderId = createOrderResult.getResult().getOrder_id();
         String driverIds = "";
