@@ -215,4 +215,20 @@ public class OrderAPI extends BaseAPI {
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<CancelOrder>>(){});
     }
+
+    /**
+     * 修改订单
+     *
+     * @param accessToken accessToken
+     * @param reqMap 请求参数
+     * @return BaseResultT<UpdateOrder>
+     */
+    public static BaseResultT<UpdateOrder> updateOrder(String accessToken, String orderId, Map<String, Object> reqMap) {
+        HttpEntity reqEntity = BaseAPI.getPostHttpEntity(accessToken, reqMap);
+        HttpUriRequest httpUriRequest = RequestBuilder.put()
+                .setUri(BASE_URI + "/v2/order/" + orderId)
+                .setEntity(reqEntity)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<UpdateOrder>>(){});
+    }
 }

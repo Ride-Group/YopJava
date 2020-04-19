@@ -154,4 +154,22 @@ public class BaseTest {
 
         return reqMap;
     }
+
+    public static Map<String, Object> getUpdateOrderParams() {
+        HashMap<String, Object> reqMap = new HashMap<>();
+
+        /*
+         * passenger_name	乘车人姓名	test 最大长度utf8 30
+            passenger_phone	乘车人电话	111111111
+            passenger_number	乘车人数
+            coupon_name	优惠券标签	例'易到百度xxx优惠券'
+         */
+
+        reqMap.put("passenger_name", "乘车人");
+        reqMap.put("passenger_phone", "16811116667");
+        reqMap.put("passenger_number", "1");
+        reqMap.put("coupon_name", "百度优惠券");
+
+        return reqMap;
+    }
 }
