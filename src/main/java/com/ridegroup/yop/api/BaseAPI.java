@@ -1,10 +1,17 @@
 package com.ridegroup.yop.api;
 
+import com.alibaba.fastjson.TypeReference;
+import com.ridegroup.yop.bean.BaseResultT;
+import com.ridegroup.yop.bean.order.OrderList;
+import com.ridegroup.yop.client.LocalHttpClient;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.methods.RequestBuilder;
+import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
@@ -12,6 +19,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -121,6 +130,27 @@ public abstract class BaseAPI {
         }
         // 去掉第一个&
         return paramStr.substring(1);
+    }
+
+    public static String getUri(String path, String accessToken, Map<String, Object> reqMap) {
+        URIBuilder uri = null;
+        try {
+            uri = new URIBuilder(BASE_URI + path);
+            List<NameValuePair> formParams = new ArrayList<NameValuePair>();
+            formParams.add(new BasicNameValuePair("access_token", accessToken));
+
+            Iterator iterator = reqMap.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<String, String> entry = (Map.Entry<String, String>) iterator.next();
+                formParams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+            }
+            uri.addParameters(formParams);
+
+            return uri.build().toString();
+        } catch (URISyntaxException e) {
+            logger.error(e.toString());
+        }
+        return BASE_URI + path;
     }
 
     public static HttpEntity getPostHttpEntity(String accessToken, Map<String, Object> reqMap) {

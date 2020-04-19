@@ -39,27 +39,12 @@ public class OrderAPI extends BaseAPI {
      * @return BaseResultT<OrderList>
      */
     public static BaseResultT<OrderList> getOrderList(String accessToken, Map<String, Object> reqMap) {
-        URIBuilder uri = null;
-        try {
-            uri = new URIBuilder(BASE_URI + "/v2/order");
-            List<NameValuePair> formParams = new ArrayList<NameValuePair>();
-            formParams.add(new BasicNameValuePair("access_token", accessToken));
+        String uri = BaseAPI.getUri("/v2/order", accessToken, reqMap);
 
-            Iterator iterator = reqMap.entrySet().iterator();
-            while (iterator.hasNext()) {
-                Map.Entry<String, String> entry = (Map.Entry<String, String>) iterator.next();
-                formParams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
-            }
-            uri.addParameters(formParams);
-
-            HttpUriRequest httpUriRequest = RequestBuilder.get()
-                    .setUri(uri.build())
-                    .build();
-            return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<OrderList>>(){});
-        } catch (URISyntaxException e) {
-            logger.error(e.toString());
-        }
-        return null;
+        HttpUriRequest httpUriRequest = RequestBuilder.get()
+                .setUri(uri)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<OrderList>>(){});
     }
 
     /**
@@ -96,6 +81,23 @@ public class OrderAPI extends BaseAPI {
                 .setUri(BASE_URI + "/v2/order")
                 .setEntity(reqEntity)
                 .setConfig(requestConfig)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, CreateOrderResult.class);
+    }
+
+    /**
+     * 创建订单
+     *
+     * @param accessToken accessToken
+     * @param reqMap 请求参数
+     * @return CreateOrderResult
+     */
+    public static CreateOrderResult getSelectDriver(String accessToken, Map<String, Object> reqMap) {
+        HttpEntity reqEntity = BaseAPI.getPostHttpEntity(accessToken, reqMap);
+
+        HttpUriRequest httpUriRequest = RequestBuilder.get()
+                .setUri(BASE_URI + "v2/driver/getSelectDriver")
+                .setEntity(reqEntity)
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, CreateOrderResult.class);
     }
