@@ -4,6 +4,7 @@ import com.ridegroup.yop.api.BaseAPI;
 import com.ridegroup.yop.api.OrderAPI;
 import com.ridegroup.yop.api.PriceNewAPI;
 import com.ridegroup.yop.bean.BaseResultT;
+import com.ridegroup.yop.bean.order.AcceptedDriver;
 import com.ridegroup.yop.bean.order.CreateOrderResult;
 import com.ridegroup.yop.bean.order.OrderInfo;
 import com.ridegroup.yop.bean.order.OrderList;
@@ -111,5 +112,13 @@ public class OrderTest extends BaseTest {
 
         CreateOrderResult createOrderResult = OrderAPI.createOrder(ACCESS_TOKEN, reqMap);
         assertEquals("200", createOrderResult.getCode());
+    }
+
+    @Test
+    public void testGetSelectDriver() {
+        String orderId = "6816269519521542779";
+        String driverIds = "";
+        BaseResultT<AcceptedDriver> selectDriver = OrderAPI.getSelectDriver(ACCESS_TOKEN, orderId, driverIds, BaseAPI.MAP_TYPE_MARS);
+        assertEquals("200", selectDriver.getCode());
     }
 }

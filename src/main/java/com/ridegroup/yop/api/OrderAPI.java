@@ -2,6 +2,7 @@ package com.ridegroup.yop.api;
 
 import com.alibaba.fastjson.TypeReference;
 import com.ridegroup.yop.bean.BaseResultT;
+import com.ridegroup.yop.bean.order.AcceptedDriver;
 import com.ridegroup.yop.bean.order.CreateOrderResult;
 import com.ridegroup.yop.bean.order.OrderInfo;
 import com.ridegroup.yop.bean.order.OrderList;
@@ -26,6 +27,8 @@ import java.util.Map;
 
 /**
  * Order API
+ *
+ * https://github.com/yongche/developer.yongche.com/wiki/order#getDriverInfo
  *
  * @author PeterZhang
  */
@@ -86,19 +89,23 @@ public class OrderAPI extends BaseAPI {
     }
 
     /**
-     * 创建订单
+     * 获取司机列表
+     * 企业帐户中设置为允许用户选司机本接口才可用
      *
      * @param accessToken accessToken
-     * @param reqMap 请求参数
-     * @return CreateOrderResult
+     * @param orderId 订单号
+     * @param driverIds 不想获取的司机id列表
+     * @param mapType 1：百度，2：火星 3-谷歌 默认值：1
+     * @return BaseResultT<AcceptedDriver>
      */
-    public static CreateOrderResult getSelectDriver(String accessToken, Map<String, Object> reqMap) {
-        HttpEntity reqEntity = BaseAPI.getPostHttpEntity(accessToken, reqMap);
-
+    public static BaseResultT<AcceptedDriver> getSelectDriver(String accessToken, String orderId, String driverIds, String mapType) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
-                .setUri(BASE_URI + "v2/driver/getSelectDriver")
-                .setEntity(reqEntity)
+                .setUri(BASE_URI + "/v2/driver/getSelectDriver")
+                .addParameter("access_token", accessToken)
+                .addParameter("order_id", orderId)
+                .addParameter("driver_ids", driverIds)
+                .addParameter("map_type", mapType)
                 .build();
-        return LocalHttpClient.executeJsonResult(httpUriRequest, CreateOrderResult.class);
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<AcceptedDriver>>(){});
     }
 }
