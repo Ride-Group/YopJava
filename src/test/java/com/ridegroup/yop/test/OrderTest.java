@@ -6,10 +6,7 @@ import com.ridegroup.yop.api.PriceNewAPI;
 import com.ridegroup.yop.bean.BaseResult;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.driver.DriverInfo;
-import com.ridegroup.yop.bean.order.AcceptedDriver;
-import com.ridegroup.yop.bean.order.CreateOrderResult;
-import com.ridegroup.yop.bean.order.OrderInfo;
-import com.ridegroup.yop.bean.order.OrderList;
+import com.ridegroup.yop.bean.order.*;
 import com.ridegroup.yop.bean.price.PriceNew;
 import com.ridegroup.yop.bean.price.PriceNewT;
 import org.junit.Before;
@@ -76,6 +73,12 @@ public class OrderTest extends BaseTest {
     public void testDecisionDriver() {
         BaseResult decisionDriver = OrderAPI.decisionDriver(ACCESS_TOKEN, ORDER_ID, DRIVER_ID, "0");
         assertEquals("400", decisionDriver.getCode());
+    }
+
+    @Test
+    public void testGetOrderTrack() {
+        BaseResultT<List<Position>> orderTrack = OrderAPI.getOrderTrack(ACCESS_TOKEN, ORDER_ID, BaseAPI.MAP_TYPE_MARS);
+        assertEquals("400", orderTrack.getCode());
     }
 
     @Test

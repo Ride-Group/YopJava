@@ -4,10 +4,7 @@ import com.alibaba.fastjson.TypeReference;
 import com.ridegroup.yop.bean.BaseResult;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.driver.DriverInfo;
-import com.ridegroup.yop.bean.order.AcceptedDriver;
-import com.ridegroup.yop.bean.order.CreateOrderResult;
-import com.ridegroup.yop.bean.order.OrderInfo;
-import com.ridegroup.yop.bean.order.OrderList;
+import com.ridegroup.yop.bean.order.*;
 import com.ridegroup.yop.client.LocalHttpClient;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
@@ -145,5 +142,23 @@ public class OrderAPI extends BaseAPI {
                 .addParameter("third_party_coupon", thirdPartyCoupon)
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, BaseResult.class);
+    }
+
+    /**
+     * 订单行驶轨迹
+     *
+     * @param accessToken accessToken
+     * @param orderId 订单号
+     * @param mapType 1：百度，2：火星 3-谷歌 默认值：1
+     * @return BaseResultT<List<Position>>
+     */
+    public static BaseResultT<List<Position>> getOrderTrack(String accessToken, String orderId, String mapType) {
+        HttpUriRequest httpUriRequest = RequestBuilder.get()
+                .setUri(BASE_URI + "/v2/driver/orderTrack")
+                .addParameter("access_token", accessToken)
+                .addParameter("order_id", orderId)
+                .addParameter("map_type", mapType)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<List<Position>>>(){});
     }
 }
