@@ -3,6 +3,7 @@ package com.ridegroup.yop.test;
 import com.ridegroup.yop.api.BaseAPI;
 import com.ridegroup.yop.api.OrderAPI;
 import com.ridegroup.yop.api.PriceNewAPI;
+import com.ridegroup.yop.bean.BaseResult;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.driver.DriverInfo;
 import com.ridegroup.yop.bean.order.AcceptedDriver;
@@ -69,6 +70,12 @@ public class OrderTest extends BaseTest {
     public void testGetOrderDriverInfo() {
         BaseResultT<DriverInfo> selectDriver = OrderAPI.getOrderDriverInfo(ACCESS_TOKEN, ORDER_ID);
         assertEquals("400", selectDriver.getCode());
+    }
+
+    @Test
+    public void testDecisionDriver() {
+        BaseResult decisionDriver = OrderAPI.decisionDriver(ACCESS_TOKEN, ORDER_ID, DRIVER_ID, "0");
+        assertEquals("400", decisionDriver.getCode());
     }
 
     @Test
