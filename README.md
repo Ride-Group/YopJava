@@ -7,3 +7,10 @@ cat country.txt|awk -F',' '{print "public final static String COUNTRY_"toupper($
 cat airport.txt|sort -t ',' -k 7|awk -F',,,' '{print "public final static String AIRPORT_"toupper($3)"_"toupper($1)" = \""$1"\"; // "$2}'
 
 LUM,,,德宏芒市机场,,,芒市,,,0,,,0,,,,,,,,,,,,
+
+
+<dependency>
+    <groupId>com.github.zhangchunsheng</groupId>
+    <artifactId>yop-java</artifactId>
+    <version>1.0.1</version>
+</dependency>

@@ -256,7 +256,7 @@ public class OrderAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param orderId 订单ID
-     * @return BaseResult
+     * @return BaseResultT<EstimateData>
      */
     public static BaseResultT<EstimateData> getEstimateData(String accessToken, String orderId) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
@@ -265,5 +265,21 @@ public class OrderAPI extends BaseAPI {
                 .addParameter("order_id", orderId)
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<EstimateData>>(){});
+    }
+
+    /**
+     * 获得订单取消费用
+     *
+     * @param accessToken accessToken
+     * @param orderId 订单ID
+     * @return BaseResultT<CancelOrderFee>
+     */
+    public static BaseResultT<CancelOrderFee> getCancelOrderFee(String accessToken, String orderId) {
+        HttpUriRequest httpUriRequest = RequestBuilder.get()
+                .setUri(BASE_URI + "/v2/cost/penalty")
+                .addParameter("access_token", accessToken)
+                .addParameter("order_id", orderId)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<CancelOrderFee>>(){});
     }
 }

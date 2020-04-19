@@ -120,6 +120,12 @@ public class OrderTest extends BaseTest {
     }
 
     @Test
+    public void testGetCancelOrderFee() {
+        BaseResultT<CancelOrderFee> cancelOrderFee = OrderAPI.getCancelOrderFee(ACCESS_TOKEN, ORDER_ID);
+        assertEquals("200", cancelOrderFee.getCode());
+    }
+
+    @Test
     public void testCreateOrderAndGetSelectDriver() {
         Map<String, Object> reqMap = BaseTest.getCreateOrderParams();
         CreateOrderResult createOrderResult = OrderAPI.createOrder(ACCESS_TOKEN, reqMap);
