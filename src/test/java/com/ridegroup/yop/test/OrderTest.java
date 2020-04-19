@@ -114,6 +114,12 @@ public class OrderTest extends BaseTest {
     }
 
     @Test
+    public void testGetEstimateData() {
+        BaseResultT<EstimateData> estimateData = OrderAPI.getEstimateData(ACCESS_TOKEN, ORDER_ID);
+        assertEquals("200", estimateData.getCode());
+    }
+
+    @Test
     public void testCreateOrderAndGetSelectDriver() {
         Map<String, Object> reqMap = BaseTest.getCreateOrderParams();
         CreateOrderResult createOrderResult = OrderAPI.createOrder(ACCESS_TOKEN, reqMap);

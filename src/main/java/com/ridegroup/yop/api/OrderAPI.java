@@ -250,4 +250,20 @@ public class OrderAPI extends BaseAPI {
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, BaseResult.class);
     }
+
+    /**
+     * 获得订单计费信息
+     *
+     * @param accessToken accessToken
+     * @param orderId 订单ID
+     * @return BaseResult
+     */
+    public static BaseResultT<EstimateData> getEstimateData(String accessToken, String orderId) {
+        HttpUriRequest httpUriRequest = RequestBuilder.get()
+                .setUri(BASE_URI + "/v2/order/calculate/" + orderId)
+                .addParameter("access_token", accessToken)
+                .addParameter("order_id", orderId)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<EstimateData>>(){});
+    }
 }
