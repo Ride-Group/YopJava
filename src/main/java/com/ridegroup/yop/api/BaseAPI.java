@@ -30,6 +30,35 @@ public abstract class BaseAPI {
     public final static String MAP_TYPE_MARS = "2";
     public final static String MAP_TYPE_GOOGLE = "3";
 
+    public final static String PRODUCT_TIME_RENT = "1";        // 时租-包时
+    public final static String PRODUCT_DISTANCE_RENT = "2";    // 时租-包行程
+    public final static String PRODUCT_DAY_RENT = "3";         // 整租-按日
+    public final static String PRODUCT_WEEK_RENT = "4";        // 整租-按周
+    public final static String PRODUCT_MONTH_RENT = "5";       // 整租-按月
+    public final static String PRODUCT_YEAR_RENT = "6";        // 整租-按年
+    public final static String PRODUCT_FROM_AIRPORT = "7";     // 定价-接机
+    public final static String PRODUCT_TO_AIRPORT = "8";       // 定价-送机
+    public final static String PRODUCT_MANUAL_COMMON = "9";    // 议价-通用
+    public final static String PRODUCT_MANUAL_DRUNK = "10";    // 议价-酒后代驾
+    public final static String PRODUCT_HALF_DAY = "11";        // 定价-半日租
+    public final static String PRODUCT_FULL_DAY = "12";        // 定价-日租
+    public final static String PRODUCT_HOTLINE = "13";         // 定价-热门线路
+    public final static String PRODUCT_HOTLINE_ROUND = "14";   // 定价-热门线路往返
+    public final static String PRODUCT_TRY_DRIVE = "15";       // 试乘试驾
+    public final static String PRODUCT_HOURLY_COMBO = "16";    // 定价-包时用车
+    public final static String PRODUCT_ASAP = "17";            // 随叫随到
+    public final static String PRODUCT_TAXI = "18";            // 时租-出租车
+
+    //car_type
+    public final static String CAR_TYPE_MASS = "1";            // 经济车型，已不再使用，可用37
+    public final static String CAR_TYPE_COMFORT = "2";         // 舒适车型
+    public final static String CAR_TYPE_LIMO = "3";            // 豪华车型
+    public final static String CAR_TYPE_LUXURY = "4";          // 奢华车型
+    public final static String CAR_TYPE_BUSINESS = "5";        // 商务车型
+    public final static String CAR_TYPE_YOUNG = "37";          // 易达
+    public final static String CAR_TYPE_TAXI = "78";           // 出租车
+    
+    // 订单状态
     public final static String ORDER_STATUS_ALL = "all";                //所有状态
 
     public final static String ORDER_STATUS_DISABLED = "-1";            //无效
@@ -42,8 +71,23 @@ public abstract class BaseAPI {
     public final static String ORDER_STATUS_SERVICESTART = "6";         //服务开始
     public final static String ORDER_STATUS_SERVICEEND = "7";           //服务结束
     public final static String ORDER_STATUS_CANCELLED = "8";            //取消
+    
+    // pay status
+    public final static String PAY_STATUS_NO_NEED = "0";                  //0:无需付款
+    public final static String PAY_STATUS_NONE = "1";                     //1:未付款
+    public final static String PAY_STATUS_PORTION = "2";                  //2:部分付款
+    public final static String PAY_STATUS_OFF = "3";                      //3:已付款
 
     // 200：正确返回 400：发生错误 511:订单操作超时 512 该app_trade_no对应的订单正在被创建499 帐户异常 （详见错误码说明）
+    // https://github.com/yongche/developer.yongche.com/wiki/errorCode
+    /*错误码代码	错误信息描述	含义
+        511	订单操作超时	该操作后端正在执行，请稍后重试
+        512	该app_trade_no对应的订单正在被创建	用相同的app_trade_no在短时间内重复创建订单，上一个请求还没有处理完，请稍后重试
+        513	该用户取消次数过多	该订单用户取消次数达到风控规则，无法创建订单
+        523	司机被别人选走	选择司机的时候，司机被别人选走
+        530	价格校验失败	新一口价日租、半日租价格校验
+        499	帐户异常	可能是帐户被冻结等情况，请联系易到
+        400	其他错误	*/
     public final static String RET_OK = "200";            //正确返回
     public final static String RET_INVALID_PARAM = "400";            //发生错误
     public final static String RET_ORDER_TIME_OUT = "511";            //订单操作超时
