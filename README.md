@@ -1,6 +1,10 @@
 # YopJava
 基于YOP开放平台的SDK
 
+### 使用SDK
+```java
+BaseResultT<Map<String, AvailableService>> availableService = ToftAPI.getAvailableService(ACCESS_TOKEN);
+```
 
 ### 城市数据
 ```
