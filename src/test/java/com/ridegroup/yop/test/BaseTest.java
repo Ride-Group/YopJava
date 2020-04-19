@@ -20,6 +20,7 @@ public class BaseTest {
      * 6817338275257610495 */
     protected final static String ORDER_ID = "6816269519521542779";
     protected final static String DRIVER_ID = "4099101";
+    protected final static String COMMENT_TAG_ID = "1";
 
     public static Map<String, Object> getCreateOrderParams() {
         HashMap<String, Object> reqMap = new HashMap<>();
@@ -169,6 +170,24 @@ public class BaseTest {
         reqMap.put("passenger_phone", "16811116667");
         reqMap.put("passenger_number", "1");
         reqMap.put("coupon_name", "百度优惠券");
+
+        return reqMap;
+    }
+
+    public static Map<String, Object> getCommentOrderParams() {
+        HashMap<String, Object> reqMap = new HashMap<>();
+
+        /*
+         * order_id	订单号	必填
+            content	评价文本内容	utf8最大300，非必填
+            comment_tag_id	一个或多个标签id（逗号分割）	例如:1,3
+            score	评分（１－５）	score,comment_tag_id必有其一
+         */
+
+        reqMap.put("order_id", ORDER_ID);
+        reqMap.put("content", "评价");
+        reqMap.put("comment_tag_id", COMMENT_TAG_ID);
+        reqMap.put("score", "5");
 
         return reqMap;
     }

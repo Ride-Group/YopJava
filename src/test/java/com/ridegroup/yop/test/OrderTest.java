@@ -132,6 +132,13 @@ public class OrderTest extends BaseTest {
     }
 
     @Test
+    public void testCommentOrder() {
+        Map<String, Object> reqMap = BaseTest.getCommentOrderParams();
+        BaseResult commentOrder = OrderAPI.commentOrder(ACCESS_TOKEN, reqMap);
+        assertEquals("400", commentOrder.getCode());
+    }
+
+    @Test
     public void testCreateOrderAndGetSelectDriver() {
         Map<String, Object> reqMap = BaseTest.getCreateOrderParams();
         CreateOrderResult createOrderResult = OrderAPI.createOrder(ACCESS_TOKEN, reqMap);

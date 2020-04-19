@@ -296,4 +296,19 @@ public class OrderAPI extends BaseAPI {
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<List<CommentTag>>>(){});
     }
+
+    /**
+     * 评价订单
+     *
+     * @param accessToken accessToken
+     * @return BaseResult
+     */
+    public static BaseResult commentOrder(String accessToken, Map<String, Object> reqMap) {
+        HttpEntity reqEntity = BaseAPI.getPostHttpEntity(accessToken, reqMap);
+        HttpUriRequest httpUriRequest = RequestBuilder.post()
+                .setUri(BASE_URI + "/v2/comment")
+                .setEntity(reqEntity)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, BaseResult.class);
+    }
 }
