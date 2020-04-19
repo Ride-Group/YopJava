@@ -43,6 +43,13 @@ public abstract class BaseAPI {
     public final static String ORDER_STATUS_SERVICEEND = "7";           //服务结束
     public final static String ORDER_STATUS_CANCELLED = "8";            //取消
 
+    // 200：正确返回 400：发生错误 511:订单操作超时 512 该app_trade_no对应的订单正在被创建499 帐户异常 （详见错误码说明）
+    public final static String RET_OK = "200";            //正确返回
+    public final static String RET_INVALID_PARAM = "400";            //发生错误
+    public final static String RET_ORDER_TIME_OUT = "511";            //订单操作超时
+    public final static String RET_ORDER_CREATING = "512";            //该app_trade_no对应的订单正在被创建
+    public final static String RET_ORDER_CHECK_ACCOUNT = "499";            //帐户异常 （详见错误码说明）
+
     protected static Header jsonHeader = new BasicHeader(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.toString());
     protected static Header xmlHeader = new BasicHeader(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_XML.toString());
 
