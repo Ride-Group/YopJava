@@ -4,6 +4,7 @@ import com.ridegroup.yop.api.BaseAPI;
 import com.ridegroup.yop.api.OrderAPI;
 import com.ridegroup.yop.api.PriceNewAPI;
 import com.ridegroup.yop.bean.BaseResultT;
+import com.ridegroup.yop.bean.driver.DriverInfo;
 import com.ridegroup.yop.bean.order.AcceptedDriver;
 import com.ridegroup.yop.bean.order.CreateOrderResult;
 import com.ridegroup.yop.bean.order.OrderInfo;
@@ -46,8 +47,7 @@ public class OrderTest extends BaseTest {
 
     @Test
     public void testGetOrderInfo() {
-        String orderId = "6816269519521542779";
-        BaseResultT<OrderInfo> orderInfo = OrderAPI.getOrderInfo(ACCESS_TOKEN, orderId);
+        BaseResultT<OrderInfo> orderInfo = OrderAPI.getOrderInfo(ACCESS_TOKEN, ORDER_ID);
         assertEquals("200", orderInfo.getCode());
     }
 
@@ -60,9 +60,14 @@ public class OrderTest extends BaseTest {
 
     @Test
     public void testGetSelectDriver() {
-        String orderId = "6817338275257610495";
         String driverIds = "";
-        BaseResultT<AcceptedDriver> selectDriver = OrderAPI.getSelectDriver(ACCESS_TOKEN, orderId, driverIds, BaseAPI.MAP_TYPE_MARS);
+        BaseResultT<AcceptedDriver> selectDriver = OrderAPI.getSelectDriver(ACCESS_TOKEN, ORDER_ID, driverIds, BaseAPI.MAP_TYPE_MARS);
+        assertEquals("400", selectDriver.getCode());
+    }
+
+    @Test
+    public void testGetOrderDriverInfo() {
+        BaseResultT<DriverInfo> selectDriver = OrderAPI.getOrderDriverInfo(ACCESS_TOKEN, ORDER_ID);
         assertEquals("400", selectDriver.getCode());
     }
 

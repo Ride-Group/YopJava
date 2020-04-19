@@ -7,4 +7,5 @@ package com.ridegroup.yop.api;
  * @date 2020-04-19
  */
 public class DriverAPI extends BaseAPI {
+
 }

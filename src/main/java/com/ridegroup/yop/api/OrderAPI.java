@@ -2,6 +2,7 @@ package com.ridegroup.yop.api;
 
 import com.alibaba.fastjson.TypeReference;
 import com.ridegroup.yop.bean.BaseResultT;
+import com.ridegroup.yop.bean.driver.DriverInfo;
 import com.ridegroup.yop.bean.order.AcceptedDriver;
 import com.ridegroup.yop.bean.order.CreateOrderResult;
 import com.ridegroup.yop.bean.order.OrderInfo;
@@ -107,5 +108,21 @@ public class OrderAPI extends BaseAPI {
                 .addParameter("map_type", mapType)
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<AcceptedDriver>>(){});
+    }
+
+    /**
+     * 获取订单司机详细信息
+     *
+     * @param accessToken accessToken
+     * @param orderId 订单号
+     * @return BaseResultT<DriverInfo>
+     */
+    public static BaseResultT<DriverInfo> getOrderDriverInfo(String accessToken, String orderId) {
+        HttpUriRequest httpUriRequest = RequestBuilder.get()
+                .setUri(BASE_URI + "/v2/driver/info")
+                .addParameter("access_token", accessToken)
+                .addParameter("order_id", orderId)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<DriverInfo>>(){});
     }
 }

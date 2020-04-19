@@ -15,6 +15,12 @@ public class BaseTest {
     protected final static String TYPE = "17";
     protected final static String CAR_TYPE_ID = "2";
 
+    //6816269519521542779
+    /*
+     * 6817338275257610495 */
+    protected final static String ORDER_ID = "6816269519521542779";
+    protected final static String DRIVER_ID = "4099101";
+
     public static Map<String, Object> getCreateOrderParams() {
         HashMap<String, Object> reqMap = new HashMap<>();
 
