@@ -93,6 +93,9 @@ public abstract class BaseAPI {
     public final static String REASON_CAR_NOT_ARRIVE = "54";               //车辆未在预定时间到达
     public final static String REASON_OTHER = "58";                        //其它
 
+    //订单异常状态
+    public final static String ABNORMAL_MARK_CUSTOM = "2";                 //2： 客户设置的异常
+
     // 200：正确返回 400：发生错误 511:订单操作超时 512 该app_trade_no对应的订单正在被创建499 帐户异常 （详见错误码说明）
     // https://github.com/yongche/developer.yongche.com/wiki/errorCode
     /*错误码代码	错误信息描述	含义

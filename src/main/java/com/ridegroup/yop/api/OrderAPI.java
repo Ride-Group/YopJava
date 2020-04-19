@@ -231,4 +231,23 @@ public class OrderAPI extends BaseAPI {
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<UpdateOrder>>(){});
     }
+
+    /**
+     * 异常订单接口
+     *
+     * @param accessToken accessToken
+     * @param orderId 订单ID
+     * @param abnormalMark 订单异常状态，2： 客户设置的异常
+     * @param abnormalMsg 异常原因
+     * @return BaseResult
+     */
+    public static BaseResult abnormalOrder(String accessToken, String orderId, String abnormalMark, String abnormalMsg) {
+        HttpUriRequest httpUriRequest = RequestBuilder.post()
+                .setUri(BASE_URI + "/v2/order/abnormal/" + orderId)
+                .addParameter("access_token", accessToken)
+                .addParameter("abnormal_mark", abnormalMark)
+                .addParameter("abnormal_msg", abnormalMsg)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, BaseResult.class);
+    }
 }

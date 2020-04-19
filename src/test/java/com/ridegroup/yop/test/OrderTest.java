@@ -108,6 +108,12 @@ public class OrderTest extends BaseTest {
     }
 
     @Test
+    public void testAbnormalOrder() {
+        BaseResult abnormalOrder = OrderAPI.abnormalOrder(ACCESS_TOKEN, ORDER_ID, BaseAPI.ABNORMAL_MARK_CUSTOM, "空驶公里数异常");
+        assertEquals("400", abnormalOrder.getCode());
+    }
+
+    @Test
     public void testCreateOrderAndGetSelectDriver() {
         Map<String, Object> reqMap = BaseTest.getCreateOrderParams();
         CreateOrderResult createOrderResult = OrderAPI.createOrder(ACCESS_TOKEN, reqMap);
