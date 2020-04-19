@@ -88,6 +88,13 @@ public class OrderTest extends BaseTest {
     }
 
     @Test
+    public void testCreateReceipt() {
+        Map<String, Object> reqMap = BaseTest.getCreateReceiptParams();
+        BaseResult createReceipt = OrderAPI.createReceipt(ACCESS_TOKEN, reqMap);
+        assertEquals("400", createReceipt.getCode());
+    }
+
+    @Test
     public void testCancelOrder() {
         BaseResultT<CancelOrder> cancelOrder = OrderAPI.cancelOrder(ACCESS_TOKEN, ORDER_ID, BaseAPI.REASON_CHANGE_INFO_REORDER, "");
         assertEquals("200", cancelOrder.getCode());

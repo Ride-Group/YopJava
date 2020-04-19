@@ -187,7 +187,7 @@ public class OrderAPI extends BaseAPI {
      * @param reqMap 请求参数
      * @return BaseResultT<Position>
      */
-    public static BaseResult getDriverLocation(String accessToken, Map<String, Object> reqMap) {
+    public static BaseResult createReceipt(String accessToken, Map<String, Object> reqMap) {
         HttpEntity reqEntity = BaseAPI.getPostHttpEntity(accessToken, reqMap);
         HttpUriRequest httpUriRequest = RequestBuilder.post()
                 .setUri(BASE_URI + "/v2/receipt/create")

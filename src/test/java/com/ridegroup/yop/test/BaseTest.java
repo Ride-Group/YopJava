@@ -122,4 +122,36 @@ public class BaseTest {
 
         return reqMap;
     }
+
+    public static Map<String, Object> getCreateReceiptParams() {
+        HashMap<String, Object> reqMap = new HashMap<>();
+
+        /*
+         * order_id		test
+            receipt_title	*	发票抬头 **有限公司
+            receipt_content	*	发票内容 打车费
+            province		省
+            city		城市
+            county		区、县
+            address	*	如果传了province、city、county参数，address为省、市、区县后的详细地址 如 XX路XX号。否则应该传完整地址
+            postcode	*	邮政编码
+            receipt_user	*	发票接收人姓名
+            receipt_phone	*	发票接收人电话
+            amount	*	发票金额不能小于50
+         */
+
+        reqMap.put("order_id", "");
+        reqMap.put("receipt_title", "阿里巴巴");
+        reqMap.put("receipt_content", "打车费");
+        reqMap.put("province", "北京市");
+        reqMap.put("city", "北京");
+        reqMap.put("county", "朝阳区");
+        reqMap.put("address", "一展空间");
+        reqMap.put("postcode", "100000");
+        reqMap.put("receipt_user", "测试");
+        reqMap.put("receipt_phone", "16811116667");
+        reqMap.put("amount", "100");
+
+        return reqMap;
+    }
 }
