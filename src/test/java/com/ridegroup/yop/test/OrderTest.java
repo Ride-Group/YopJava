@@ -82,6 +82,12 @@ public class OrderTest extends BaseTest {
     }
 
     @Test
+    public void testGetDriverLocation() {
+        BaseResultT<Position> driverLocation = OrderAPI.getDriverLocation(ACCESS_TOKEN, ORDER_ID, BaseAPI.MAP_TYPE_MARS);
+        assertEquals("400", driverLocation.getCode());
+    }
+
+    @Test
     public void testCreateOrderAndGetSelectDriver() {
         Map<String, Object> reqMap = BaseTest.getCreateOrderParams();
         CreateOrderResult createOrderResult = OrderAPI.createOrder(ACCESS_TOKEN, reqMap);

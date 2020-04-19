@@ -161,4 +161,22 @@ public class OrderAPI extends BaseAPI {
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<List<Position>>>(){});
     }
+
+    /**
+     * 司机位置
+     *
+     * @param accessToken accessToken
+     * @param orderId 订单号
+     * @param mapType 1：百度，2：火星 3-谷歌 默认值：1
+     * @return BaseResultT<Position>
+     */
+    public static BaseResultT<Position> getDriverLocation(String accessToken, String orderId, String mapType) {
+        HttpUriRequest httpUriRequest = RequestBuilder.get()
+                .setUri(BASE_URI + "/v2/driver/location")
+                .addParameter("access_token", accessToken)
+                .addParameter("order_id", orderId)
+                .addParameter("map_type", mapType)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<Position>>(){});
+    }
 }
