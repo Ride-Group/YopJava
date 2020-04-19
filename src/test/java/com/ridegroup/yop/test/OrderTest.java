@@ -119,6 +119,6 @@ public class OrderTest extends BaseTest {
         String orderId = "6816269519521542779";
         String driverIds = "";
         BaseResultT<AcceptedDriver> selectDriver = OrderAPI.getSelectDriver(ACCESS_TOKEN, orderId, driverIds, BaseAPI.MAP_TYPE_MARS);
-        assertEquals("200", selectDriver.getCode());
+        assertEquals("400", selectDriver.getCode());
     }
 }
