@@ -126,6 +126,12 @@ public class OrderTest extends BaseTest {
     }
 
     @Test
+    public void testGetCommentTag() {
+        BaseResultT<List<CommentTag>> commentTag = OrderAPI.getCommentTag(ACCESS_TOKEN);
+        assertEquals("200", commentTag.getCode());
+    }
+
+    @Test
     public void testCreateOrderAndGetSelectDriver() {
         Map<String, Object> reqMap = BaseTest.getCreateOrderParams();
         CreateOrderResult createOrderResult = OrderAPI.createOrder(ACCESS_TOKEN, reqMap);

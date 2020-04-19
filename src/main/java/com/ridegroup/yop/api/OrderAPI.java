@@ -282,4 +282,18 @@ public class OrderAPI extends BaseAPI {
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<CancelOrderFee>>(){});
     }
+
+    /**
+     * 获得评价标签
+     *
+     * @param accessToken accessToken
+     * @return BaseResultT<List<CommentTag>>
+     */
+    public static BaseResultT<List<CommentTag>> getCommentTag(String accessToken) {
+        HttpUriRequest httpUriRequest = RequestBuilder.get()
+                .setUri(BASE_URI + "/v2/commentTags")
+                .addParameter("access_token", accessToken)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<List<CommentTag>>>(){});
+    }
 }
