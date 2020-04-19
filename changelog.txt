@@ -22,3 +22,4 @@
 5. add v2/driver/decisionDriver api
 6. add v2/driver/orderTrack api
 7. add v2/driver/location api
+8. add v2/order delete api

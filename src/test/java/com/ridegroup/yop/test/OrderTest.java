@@ -88,6 +88,12 @@ public class OrderTest extends BaseTest {
     }
 
     @Test
+    public void testCancelOrder() {
+        BaseResultT<CancelOrder> cancelOrder = OrderAPI.cancelOrder(ACCESS_TOKEN, ORDER_ID, BaseAPI.REASON_CHANGE_INFO_REORDER, "");
+        assertEquals("200", cancelOrder.getCode());
+    }
+
+    @Test
     public void testCreateOrderAndGetSelectDriver() {
         Map<String, Object> reqMap = BaseTest.getCreateOrderParams();
         CreateOrderResult createOrderResult = OrderAPI.createOrder(ACCESS_TOKEN, reqMap);

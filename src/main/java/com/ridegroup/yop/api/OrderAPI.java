@@ -179,4 +179,24 @@ public class OrderAPI extends BaseAPI {
                 .build();
         return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<Position>>(){});
     }
+
+    /**
+     * 取消订单
+     *
+     * @param accessToken accessToken
+     * @param orderId 订单号
+     * @param reasonId 取消理由id
+     * @param otherReason 其他理由
+     * @return BaseResultT<CancelOrder>
+     */
+    public static BaseResultT<CancelOrder> cancelOrder(String accessToken, String orderId, String reasonId, String otherReason) {
+        HttpUriRequest httpUriRequest = RequestBuilder.delete()
+                .setUri(BASE_URI + "/v2/order/" + orderId)
+                .addParameter("access_token", accessToken)
+                .addParameter("order_id", orderId)
+                .addParameter("reason_id", reasonId)
+                .addParameter("other_reason", otherReason)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, new TypeReference<BaseResultT<CancelOrder>>(){});
+    }
 }

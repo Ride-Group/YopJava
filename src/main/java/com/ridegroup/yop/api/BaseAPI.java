@@ -81,6 +81,18 @@ public abstract class BaseAPI {
     public final static String PAY_STATUS_PORTION = "2";                  //2:部分付款
     public final static String PAY_STATUS_OFF = "3";                      //3:已付款
 
+    //reason
+    /*59	没有信用卡无法验证
+        60	没有网银无法充值
+        61	变更信息重新下单
+        54	车辆未在预定时间到达
+        58	其它*/
+    public final static String REASON_NO_CARD = "59";                      //没有信用卡无法验证
+    public final static String REASON_NO_UNIONPAY = "60";                  //没有网银无法充值
+    public final static String REASON_CHANGE_INFO_REORDER = "61";          //变更信息重新下单
+    public final static String REASON_CAR_NOT_ARRIVE = "54";               //车辆未在预定时间到达
+    public final static String REASON_OTHER = "58";                        //其它
+
     // 200：正确返回 400：发生错误 511:订单操作超时 512 该app_trade_no对应的订单正在被创建499 帐户异常 （详见错误码说明）
     // https://github.com/yongche/developer.yongche.com/wiki/errorCode
     /*错误码代码	错误信息描述	含义
