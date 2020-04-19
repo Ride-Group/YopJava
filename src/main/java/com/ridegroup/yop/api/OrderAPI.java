@@ -181,6 +181,22 @@ public class OrderAPI extends BaseAPI {
     }
 
     /**
+     * 开发票
+     *
+     * @param accessToken accessToken
+     * @param reqMap 请求参数
+     * @return BaseResultT<Position>
+     */
+    public static BaseResult getDriverLocation(String accessToken, Map<String, Object> reqMap) {
+        HttpEntity reqEntity = BaseAPI.getPostHttpEntity(accessToken, reqMap);
+        HttpUriRequest httpUriRequest = RequestBuilder.post()
+                .setUri(BASE_URI + "/v2/receipt/create")
+                .setEntity(reqEntity)
+                .build();
+        return LocalHttpClient.executeJsonResult(httpUriRequest, BaseResult.class);
+    }
+
+    /**
      * 取消订单
      *
      * @param accessToken accessToken
