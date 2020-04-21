@@ -20,6 +20,7 @@ public class PriceNewAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param city        city
+     * @param type        产品类型
      * @return PriceNew
      */
     public static PriceNew getPrice(String accessToken, String city, String type) {
