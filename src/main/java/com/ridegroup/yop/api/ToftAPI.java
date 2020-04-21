@@ -75,7 +75,7 @@ public class ToftAPI extends BaseAPI {
      * 获取可用服务
      *
      * @param accessToken accessToken
-     * @return BaseResultT<Map<String, AvailableService>>
+     * @return BaseResultT&lt;Map&lt;String, AvailableService&gt;&gt;
      */
     public static BaseResultT<Map<String, AvailableService>> getAvailableService(String accessToken) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
@@ -129,7 +129,7 @@ public class ToftAPI extends BaseAPI {
      * @param city        城市
      * @param type        产品类型
      * @param carTypeId   车型id
-     * @return BaseResultT<Nightfee>
+     * @return BaseResultT&lt;Nightfee&gt;
      */
     public static BaseResultT<Nightfee> getNightfee(String accessToken, String city, String type, String carTypeId) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
@@ -147,7 +147,7 @@ public class ToftAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param mapType     地图类型 1-百度 2-火星 3-谷歌 默认 1-百度
-     * @return Map<String, BaseResultT<Airport>>
+     * @return Map&lt;String, BaseResultT&lt;Airport&gt;&gt;
      */
     public static BaseResultT<Map<String, Airport>> getAirport(String accessToken, String mapType) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
@@ -163,7 +163,7 @@ public class ToftAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param mapType     地图类型 1-百度 2-火星 3-谷歌 默认 1-百度
-     * @return Map<String, BaseResultT<Train>>
+     * @return Map&lt;String, BaseResultT&lt;Train&gt;&gt;
      */
     public static BaseResultT<Map<String, Train>> getTrain(String accessToken, String mapType) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
@@ -179,7 +179,7 @@ public class ToftAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param reqMap      输入参数
-     * @return BaseResultT<Estimated>
+     * @return BaseResultT&lt;Estimated&gt;
      * @exception IllegalArgumentException 参数错误
      */
     public static BaseResultT<Estimated> estimatedOne(String accessToken, Map<String, Object> reqMap) throws IllegalArgumentException {
@@ -200,7 +200,7 @@ public class ToftAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param reqMap      输入参数
-     * @return BaseResultT<List<Estimated>>
+     * @return BaseResultT&lt;List&lt;Estimated&gt;&gt;
      */
     public static BaseResultT<List<Estimated>> estimatedAll(String accessToken, Map<String, Object> reqMap) {
         List<NameValuePair> formParams = new ArrayList<NameValuePair>();
@@ -234,7 +234,7 @@ public class ToftAPI extends BaseAPI {
      * @param accessToken accessToken
      * @param lat         出发地点纬度
      * @param lng         出发地点经度
-     * @return BaseResultT<NearbyCarCount>
+     * @return BaseResultT&lt;NearbyCarCount&gt;
      */
     public static BaseResultT<NearbyCarCount> getNearbyCarCount(String accessToken, String lat, String lng) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()

@@ -38,7 +38,7 @@ public class OrderAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param reqMap 请求参数
-     * @return BaseResultT<OrderList>
+     * @return BaseResultT&lt;OrderList&gt;
      */
     public static BaseResultT<OrderList> getOrderList(String accessToken, Map<String, Object> reqMap) {
         String uri = BaseAPI.getUri("/v2/order", accessToken, reqMap);
@@ -54,7 +54,7 @@ public class OrderAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param orderId     订单号
-     * @return BaseResultT<OrderInfo>
+     * @return BaseResultT&lt;OrderInfo&gt;
      */
     public static BaseResultT<OrderInfo> getOrderInfo(String accessToken, String orderId) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
@@ -95,7 +95,7 @@ public class OrderAPI extends BaseAPI {
      * @param orderId 订单号
      * @param driverIds 不想获取的司机id列表
      * @param mapType 1：百度，2：火星 3-谷歌 默认值：1
-     * @return BaseResultT<AcceptedDriver>
+     * @return BaseResultT&lt;AcceptedDriver&gt;
      */
     public static BaseResultT<AcceptedDriver> getSelectDriver(String accessToken, String orderId, String driverIds, String mapType) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
@@ -113,7 +113,7 @@ public class OrderAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param orderId 订单号
-     * @return BaseResultT<DriverInfo>
+     * @return BaseResultT&lt;DriverInfo&gt;
      */
     public static BaseResultT<DriverInfo> getOrderDriverInfo(String accessToken, String orderId) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
@@ -131,7 +131,7 @@ public class OrderAPI extends BaseAPI {
      * @param orderId 订单号
      * @param driverId 司机id
      * @param thirdPartyCoupon 优惠券金额
-     * @return BaseResultT<DriverInfo>
+     * @return BaseResultT&lt;DriverInfo&gt;
      */
     public static BaseResult decisionDriver(String accessToken, String orderId, String driverId, String thirdPartyCoupon) {
         HttpUriRequest httpUriRequest = RequestBuilder.post()
@@ -150,7 +150,7 @@ public class OrderAPI extends BaseAPI {
      * @param accessToken accessToken
      * @param orderId 订单号
      * @param mapType 1：百度，2：火星 3-谷歌 默认值：1
-     * @return BaseResultT<List<Position>>
+     * @return BaseResultT&lt;List&lt;Position&gt;&gt;
      */
     public static BaseResultT<List<Position>> getOrderTrack(String accessToken, String orderId, String mapType) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
@@ -168,7 +168,7 @@ public class OrderAPI extends BaseAPI {
      * @param accessToken accessToken
      * @param orderId 订单号
      * @param mapType 1：百度，2：火星 3-谷歌 默认值：1
-     * @return BaseResultT<Position>
+     * @return BaseResultT&lt;Position&gt;
      */
     public static BaseResultT<Position> getDriverLocation(String accessToken, String orderId, String mapType) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
@@ -185,7 +185,7 @@ public class OrderAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param reqMap 请求参数
-     * @return BaseResultT<Position>
+     * @return BaseResultT&lt;Position&gt;
      */
     public static BaseResult createReceipt(String accessToken, Map<String, Object> reqMap) {
         HttpEntity reqEntity = BaseAPI.getPostHttpEntity(accessToken, reqMap);
@@ -203,7 +203,7 @@ public class OrderAPI extends BaseAPI {
      * @param orderId 订单号
      * @param reasonId 取消理由id
      * @param otherReason 其他理由
-     * @return BaseResultT<CancelOrder>
+     * @return BaseResultT&lt;CancelOrder&gt;
      */
     public static BaseResultT<CancelOrder> cancelOrder(String accessToken, String orderId, String reasonId, String otherReason) {
         HttpUriRequest httpUriRequest = RequestBuilder.delete()
@@ -221,7 +221,7 @@ public class OrderAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param reqMap 请求参数
-     * @return BaseResultT<UpdateOrder>
+     * @return BaseResultT&lt;UpdateOrder&gt;
      */
     public static BaseResultT<UpdateOrder> updateOrder(String accessToken, String orderId, Map<String, Object> reqMap) {
         HttpEntity reqEntity = BaseAPI.getPostHttpEntity(accessToken, reqMap);
@@ -256,7 +256,7 @@ public class OrderAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param orderId 订单ID
-     * @return BaseResultT<EstimateData>
+     * @return BaseResultT&lt;EstimateData&gt;
      */
     public static BaseResultT<EstimateData> getEstimateData(String accessToken, String orderId) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
@@ -272,7 +272,7 @@ public class OrderAPI extends BaseAPI {
      *
      * @param accessToken accessToken
      * @param orderId 订单ID
-     * @return BaseResultT<CancelOrderFee>
+     * @return BaseResultT&lt;CancelOrderFee&gt;
      */
     public static BaseResultT<CancelOrderFee> getCancelOrderFee(String accessToken, String orderId) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
@@ -287,7 +287,7 @@ public class OrderAPI extends BaseAPI {
      * 获得评价标签
      *
      * @param accessToken accessToken
-     * @return BaseResultT<List<CommentTag>>
+     * @return BaseResultT&lt;List&lt;CommentTag&gt;&gt;
      */
     public static BaseResultT<List<CommentTag>> getCommentTag(String accessToken) {
         HttpUriRequest httpUriRequest = RequestBuilder.get()
