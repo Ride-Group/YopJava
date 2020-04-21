@@ -119,6 +119,9 @@ public abstract class BaseAPI {
 
     /**
      * 只要确保你的编码输入是正确的,就可以忽略掉 UnsupportedEncodingException
+     *
+     * @param source 参数
+     * @return String
      */
     public static String getUrlParams(Map<String, Object> source) {
         Iterator<String> it = source.keySet().iterator();
@@ -141,6 +144,14 @@ public abstract class BaseAPI {
         return paramStr.substring(1);
     }
 
+    /**
+     * getUri
+     *
+     * @param path URI
+     * @param accessToken accessToken
+     * @param reqMap 请求参数
+     * @return String
+     */
     public static String getUri(String path, String accessToken, Map<String, Object> reqMap) {
         URIBuilder uri = null;
         try {
@@ -162,6 +173,13 @@ public abstract class BaseAPI {
         return BASE_URI + path;
     }
 
+    /**
+     * getPostHttpEntity
+     *
+     * @param accessToken accessToken
+     * @param reqMap 请求参数
+     * @return HttpEntity
+     */
     public static HttpEntity getPostHttpEntity(String accessToken, Map<String, Object> reqMap) {
         HttpEntity reqEntity = null;
         try {
