@@ -220,6 +220,7 @@ public class OrderAPI extends BaseAPI {
      * 修改订单
      *
      * @param accessToken accessToken
+     * @param orderId 订单号
      * @param reqMap 请求参数
      * @return BaseResultT&lt;UpdateOrder&gt;
      */
@@ -301,6 +302,7 @@ public class OrderAPI extends BaseAPI {
      * 评价订单
      *
      * @param accessToken accessToken
+     * @param reqMap 请求参数
      * @return BaseResult
      */
     public static BaseResult commentOrder(String accessToken, Map<String, Object> reqMap) {
