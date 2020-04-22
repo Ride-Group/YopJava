@@ -95,6 +95,18 @@ public class BaseTest {
             'time' => '2013-04-19 11:22:33',
             'rent_time' => 2,
             'map_type' => 2
+
+             {start_position=北京市东城区东华门街道正义路北京市人民政府(旧址),
+             map_type=2,
+             rent_time=2,
+             city=bj,
+             expect_end_longitude=116.333305,
+             expect_start_latitude=39.90469,
+             time=1587536405,
+             expect_end_latitude=39.927464,
+             type=17,
+             end_position=NS专柜,
+             expect_start_longitude=116.40717}
          */
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date(System.currentTimeMillis());
@@ -106,7 +118,7 @@ public class BaseTest {
         long time = System.currentTimeMillis();
 
         reqMap.put("city", "bj");
-        reqMap.put("type", "7");
+        reqMap.put("type", "17");
         reqMap.put("aircode", "PEK");
         if(hasCarType) {
             reqMap.put("car_type_id", "2");
