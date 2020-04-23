@@ -86,15 +86,46 @@ public abstract class BaseAPI {
         60	没有网银无法充值
         61	变更信息重新下单
         54	车辆未在预定时间到达
-        58	其它*/
+        58	其它
+
+        取消原因状态码说明
+
+        状态码	含义	说明
+        63001	无车可派
+        63002	有车无人接单(无有效司机接单)
+        63003	有司机接单，用户未选车，系统自动取消
+        63004	有司机接单，用户未选车，客户端自动取消
+        100	合作方取消*/
     public final static String REASON_NO_CARD = "59";                      //没有信用卡无法验证
     public final static String REASON_NO_UNIONPAY = "60";                  //没有网银无法充值
     public final static String REASON_CHANGE_INFO_REORDER = "61";          //变更信息重新下单
     public final static String REASON_CAR_NOT_ARRIVE = "54";               //车辆未在预定时间到达
     public final static String REASON_OTHER = "58";                        //其它
 
-    //订单异常状态
+    public final static String REASON_DISPATCH_NO_DRIVER             = "63001"; //无车可派
+    public final static String REASON_DISPATCH_NO_DRIVER_ACCEPT      = "63002"; //有车无人接单(无有效司机接单)
+    public final static String REASON_DISPATCH_SYSTEM_CANCEL         = "63003"; //有司机接单，用户未选车，系统自动取消
+    public final static String REASON_DISPATCH_APP_CANCEL            = "63004"; //有司机接单，用户未选车，客户端自动取消
+    public final static String REASON_DISPATCH_DRIVER_CANCEL         = "64001"; //IVR联系乘客取消用车
+    public final static String REASON_DISPATCH_UNCONTACT_CANCEL      = "64002"; //IVR联系不上乘客
+    public final static String REASON_DISPATCH_CANCEL_BY_DRIVER      = "65001"; //司机自助取消订单
+    public final static String REASON_DISPATCH_REDISPATCH_FAILED     = "66001"; //改派失败（客服项目改派失败直接取消订单，不生成客服工单）
+    public final static String REASON_PARTNER     = "100"; //合作方取消
+
+    /*
+    * 订单异常状态
+    * 异常状态说明
+    状态id	含义	说明
+    1	系统设置的异常
+    2	客户设置的异常
+    3	后台操作人员设置的异常
+    -1	异常已经处理完成
+    0	没有异常*/
+    public final static String ABNORMAL_MARK_SYSTEM = "1";                 //1： 系统设置的异常
     public final static String ABNORMAL_MARK_CUSTOM = "2";                 //2： 客户设置的异常
+    public final static String ABNORMAL_MARK_OPERATOR = "3";                 //3： 后台操作人员设置的异常
+    public final static String ABNORMAL_MARK_DONE = "-1";                 //-1： 客户设置的异常
+    public final static String ABNORMAL_MARK_NONE = "0";                 //0： 没有异常
 
     // 200：正确返回 400：发生错误 511:订单操作超时 512 该app_trade_no对应的订单正在被创建499 帐户异常 （详见错误码说明）
     // https://github.com/yongche/developer.yongche.com/wiki/errorCode
