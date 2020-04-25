@@ -74,8 +74,8 @@ public class AcceptedDriver {
         private int good_comment_rate;
         private int unittime_complete_count;
         private int is_served;
-        private int latitude;
-        private int longitude;
+        private double latitude;
+        private double longitude;
         private String brand;
         private String car_type;
         private int car_type_id;
@@ -130,19 +130,19 @@ public class AcceptedDriver {
             this.is_served = is_served;
         }
 
-        public int getLatitude() {
+        public double getLatitude() {
             return latitude;
         }
 
-        public void setLatitude(int latitude) {
+        public void setLatitude(double latitude) {
             this.latitude = latitude;
         }
 
-        public int getLongitude() {
+        public double getLongitude() {
             return longitude;
         }
 
-        public void setLongitude(int longitude) {
+        public void setLongitude(double longitude) {
             this.longitude = longitude;
         }
 
