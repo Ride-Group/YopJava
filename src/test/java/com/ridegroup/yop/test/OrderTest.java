@@ -83,7 +83,7 @@ public class OrderTest extends BaseTest {
 
     @Test
     public void testGetDriverLocation() {
-        BaseResultT<Position> driverLocation = OrderAPI.getDriverLocation(ACCESS_TOKEN, ORDER_ID, BaseAPI.MAP_TYPE_MARS);
+        BaseResultT<Position> driverLocation = OrderAPI.getDriverLocation(ACCESS_TOKEN, "6819690328181142745", BaseAPI.MAP_TYPE_MARS);
         assertEquals("400", driverLocation.getCode());
     }
 
@@ -115,7 +115,7 @@ public class OrderTest extends BaseTest {
 
     @Test
     public void testGetEstimateData() {
-        BaseResultT<EstimateData> estimateData = OrderAPI.getEstimateData(ACCESS_TOKEN, ORDER_ID);
+        BaseResultT<EstimateData> estimateData = OrderAPI.getEstimateData(ACCESS_TOKEN, "6819690328181142745");
         assertEquals("200", estimateData.getCode());
     }
 
