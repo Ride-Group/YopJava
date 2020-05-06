@@ -834,10 +834,15 @@ public class CityInfo {
         put("巴黎", "paris");
     }};
 
-    public static String getCityShort(String cityName) {
+    public static String getCityName(String cityName) {
         cityName = cityName.replace("市", "");
         cityName = cityName.replace("自治区", "");
         cityName = cityName.replace("特别行政区", "");
+        return cityName;
+    }
+
+    public static String getCityShort(String cityName) {
+        cityName = CityInfo.getCityName(cityName);
         if(CityInfo.CITY_MAP.containsKey(cityName)) {
             return CityInfo.CITY_MAP.get(cityName);
         } else {
