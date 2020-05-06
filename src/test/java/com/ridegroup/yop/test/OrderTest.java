@@ -115,7 +115,7 @@ public class OrderTest extends BaseTest {
 
     @Test
     public void testGetEstimateData() {
-        BaseResultT<EstimateData> estimateData = OrderAPI.getEstimateData(ACCESS_TOKEN, "6819690328181142745");
+        BaseResultT<EstimateData> estimateData = OrderAPI.getEstimateData(ACCESS_TOKEN, ORDER_ID);
         assertEquals("200", estimateData.getCode());
     }
 
