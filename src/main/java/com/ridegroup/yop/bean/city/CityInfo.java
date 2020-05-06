@@ -837,6 +837,7 @@ public class CityInfo {
     public static String getCityShort(String cityName) {
         cityName = cityName.replace("市", "");
         cityName = cityName.replace("自治区", "");
+        cityName = cityName.replace("特别行政区", "");
         if(CityInfo.CITY_MAP.containsKey(cityName)) {
             return CityInfo.CITY_MAP.get(cityName);
         } else {
