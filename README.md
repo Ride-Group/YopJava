@@ -11,6 +11,9 @@ BaseResultT<Map<String, AvailableService>> availableService = ToftAPI.getAvailab
 cat city.txt|awk -F',' '{print "public final static String SHORT_"toupper($8)" = \""$8"\"; // "$6}'
 cat country.txt|awk -F',' '{print "public final static String COUNTRY_"toupper($1)" = \""$1"\"; // "$5}'
 cat airport.txt|sort -t ',' -k 7|awk -F',,,' '{print "public final static String AIRPORT_"toupper($3)"_"toupper($1)" = \""$1"\"; // "$2}'
+
+
+cat city.txt|awk -F',' '{print "put(\""$6"\", \""$8"\");"}'
 ```
 
 ### 机场
