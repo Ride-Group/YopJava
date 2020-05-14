@@ -30,3 +30,6 @@
 13. add v2/cost/penalty api
 14. add v2/commentTags api
 15. add v2/comment api
+
+2020-05-14
+1. accepted driver add company_id
