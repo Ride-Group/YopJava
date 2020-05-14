@@ -81,6 +81,7 @@ public class AcceptedDriver {
         private int car_type_id;
         private int is_default;
         private String photo;
+        private int company_id;
 
         public int getDriver_id() {
             return driver_id;
@@ -88,6 +89,14 @@ public class AcceptedDriver {
 
         public void setDriver_id(int driver_id) {
             this.driver_id = driver_id;
+        }
+
+        public int getCompany_id() {
+            return company_id;
+        }
+
+        public void setCompany_id(int company_id) {
+            this.company_id = company_id;
         }
 
         public String getName() {
