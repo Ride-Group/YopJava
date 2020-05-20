@@ -25,8 +25,8 @@ public abstract class BaseAPI {
     private static Logger logger = LoggerFactory.getLogger(BaseAPI.class);
 
     //TODO test
-    //protected static final String BASE_URI = "https://yop.yongche.com";
-    protected static final String BASE_URI = "https://yop.yongche.org";
+    protected static final String BASE_URI = "https://yop.yongche.com";
+    //protected static final String BASE_URI = "https://yop.yongche.org";
 
     public final static String REQUEST_METHOD_GET = "GET";
     public final static String REQUEST_METHOD_POST = "POST";

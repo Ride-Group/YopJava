@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BaseTest {
-    //TODO
-    //public final static String ACCESS_TOKEN = "AAuPlpLwVpCm3blBEbiKqOyOP1W97V3PtgJQoAf3";
-    public final static String ACCESS_TOKEN = "8d19e85d4c8f32f16a4965dfe1e8f91f";
+    //TODO test
+    public final static String ACCESS_TOKEN = "AAuPlpLwVpCm3blBEbiKqOyOP1W97V3PtgJQoAf3";
+    //public final static String ACCESS_TOKEN = "8d19e85d4c8f32f16a4965dfe1e8f91f";
 
     protected final static String CITY = "bj";
     protected final static String TYPE = "17";
