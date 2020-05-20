@@ -51,7 +51,7 @@ public class OrderTest extends BaseTest {
 
     @Test
     public void testCreateOrder() {
-        Map<String, Object> reqMap = BaseTest.getCreateOrderParams();
+        Map<String, Object> reqMap = BaseTest.getCreateOrderParamsAsap();
         CreateOrderResult createOrderResult = OrderAPI.createOrder(ACCESS_TOKEN, reqMap);
         assertEquals("200", createOrderResult.getCode());
     }
