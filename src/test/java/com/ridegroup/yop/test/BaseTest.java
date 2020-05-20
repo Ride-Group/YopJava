@@ -99,11 +99,13 @@ public class BaseTest {
         reqMap.put("aircode", "");
         reqMap.put("car_type_id", "2");
         reqMap.put("start_position", "北京市朝阳区酒仙桥街道酒仙桥东路电子城·创新产业园");
+        reqMap.put("start_address", "北京市朝阳区酒仙桥街道酒仙桥东路电子城·创新产业园");
         reqMap.put("expect_start_latitude", "39.97538757324219");
         reqMap.put("expect_start_longitude", "116.49959564208984");
         reqMap.put("time", df.format(calendar.getTime()));
         reqMap.put("rent_time", "2");
         reqMap.put("end_position", "总部基地");
+        reqMap.put("end_address", "总部基地");
         reqMap.put("expect_end_latitude", "39.911093");
         reqMap.put("expect_end_longitude", "116.373055");
         reqMap.put("passenger_name", "test");
