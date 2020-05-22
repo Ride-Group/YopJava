@@ -4,7 +4,7 @@
 
     <groupId>com.github.zhangchunsheng</groupId>
     <artifactId>yop-java</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <name>yop-java</name>
     <description>Yop java sdk</description>
